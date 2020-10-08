@@ -8,9 +8,11 @@ TimeCycle(
   data,
   repLabel,
   experiments = 10000,
-  minLag = 1,
-  maxLag = 6,
-  cores = detectCores() - 2
+  minLag = 2,
+  maxLag = 5,
+  period = 24,
+  cores = parallel::detectCores() - 2,
+  laplacian = T
 )
 }
 \arguments{
@@ -24,7 +26,11 @@ TimeCycle(
 
 \item{maxLag}{int}
 
+\item{period}{int}
+
 \item{cores}{int}
+
+\item{laplacian}{boolean}
 }
 \value{
 

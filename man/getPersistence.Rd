@@ -17,5 +17,5 @@ getPersistence(TimeSeries, lag, laplacian = T)
 
 }
 \description{
-Returns the Max persistence score, returns 0 if no persistenec score exists
+Returns the Max persistence score, returns 0 if no persistence score exists
 }

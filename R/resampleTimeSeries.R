@@ -9,7 +9,7 @@
 #' @return int dataframe
 #' @export
 #'
-resampleTimeSeries <- function(distTP, numTP, numRsmps){
+resampleTimeSeries <- function(distTP, numTP, numRsmps) {
   dist <- as.numeric(as.vector(unlist(distTP)))
-  return(as.data.frame(matrix(data = sample(dist, size = numTP*numRsmps, replace = T), ncol = numTP, nrow = numRsmps)))
+  return(as.data.frame(matrix(data = sample(dist, size = numTP * numRsmps, replace = T), ncol = numTP, nrow = numRsmps)))
 }

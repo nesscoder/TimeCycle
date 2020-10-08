@@ -8,12 +8,11 @@
 #' @return
 #' @export
 #'
-getFFT <- function(y, sampFreq){
+getFFT <- function(y, sampFreq) {
   N <- length(y)
-  fk <- fft(y)/N #normalize Data
-  fk <- 2*fk[1:((length(fk)/2)+1)]# DC comp + half of positives
-  #fk <- 2*fk[seq(1, length(fk), by = 2)]
-  freq <- (0:(N-1))*sampFreq/N
+  fk <- fft(y) / N # normalize Data
+  fk <- 2 * fk[1:((length(fk) / 2) + 1)] # DC comp + half of positives
+  freq <- (0:(N - 1)) * sampFreq / N
   freq <- freq[(1:(length(fk)))]
   return(data.frame(fur = fk, freq = freq))
 }

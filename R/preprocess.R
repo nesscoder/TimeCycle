@@ -7,20 +7,18 @@
 #' @return double preprocessed dataframe /Rows = Genes, Column = Sample ZT/
 #' @export
 #'
-preprocess <- function(data){
+preprocess <- function(data) {
   data <- as.data.frame(data)
 
-  #Smooth Data with sgolay filter
-  ###THINK ABOUT DOES IT MAKE SENSE TO SMOOTH OR NOT?
-  ###MORE REPS SAMPLE POINTS YES, LESS REPS SAMPLE POINTS NO?
+  # Smooth Data with sgolay filter
   dataSmooth <- smoothData.sgolay(data)
 
-  #mean center the data
+  # mean center the data
   dataCenter <- meanCenter(dataSmooth)
 
-  #scale data between 0 and 1
-  dataScaled  <- as.data.frame(t(apply(dataCenter, 1, scaleTimeSeries)))
+  # scale data between 0 and 1
+  dataScaled <- as.data.frame(t(apply(dataCenter, 1, scaleTimeSeries)))
 
-  #return the detrended, smoothed, mean centered data
+  # return the detrended, smoothed, mean centered data
   return(dataScaled)
 }

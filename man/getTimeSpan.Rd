@@ -19,5 +19,5 @@ Converts System Time Differences to
 hh:mm:ss format
 }
 \examples{
-getTimeSpan(Sys.time(),Sys.time()+600)
+getTimeSpan(Sys.time(), Sys.time() + 600)
 }

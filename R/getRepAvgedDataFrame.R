@@ -8,18 +8,18 @@
 #' @return
 #' @export
 #'
-getRepAvgedDataFrame <- function(data, repLabel){
+getRepAvgedDataFrame <- function(data, repLabel) {
 
-  #get Column Names
+  # get Column Names
   colnames <- colnames(data)
-  #remove replicate label from colnames if they exist
-  colnames <- gsub(pattern = "_rep.",replacement = "",colnames)
-  #get unique ZT time for each point
-  colnames <- as.numeric(unlist(regmatches(colnames, gregexpr("[[:digit:]]+\\.*[[:digit:]]*",colnames))))
+  # remove replicate label from colnames if they exist
+  colnames <- gsub(pattern = "_rep.", replacement = "", colnames)
+  # get unique ZT time for each point
+  colnames <- unique(as.numeric(unlist(regmatches(colnames, gregexpr("[[:digit:]]+\\.*[[:digit:]]*", colnames)))))
 
-  #get average of Replicate Labels
-  output <- t(apply(data, MARGIN = 1, FUN = function(geneExprRow){
-    avergeReps(geneExprRow, repLabel)
+  # get average of Replicate Labels
+  output <- t(apply(data, MARGIN = 1, FUN = function(geneExprRow) {
+    averageReps(geneExprRow, repLabel)
   }))
   output <- as.data.frame(output)
   colnames(output) <- colnames

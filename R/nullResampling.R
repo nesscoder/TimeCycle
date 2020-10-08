@@ -12,6 +12,7 @@ nullResampling <- function(data, numExperiments){
 
   #Get Average Value of Data across Replicate
   dataForResampling <- data
+  colNames <- colnames(data)
 
   #get Resampled Data for Use in generating Null Distribution
   diffBetweenTP <- t(apply(dataForResampling, 1, function(geneName){
@@ -21,6 +22,7 @@ nullResampling <- function(data, numExperiments){
 
   #Resample Differences
   resampledDataNull <- resampleTimeSeries(diffBetweenTP, numTP = dim(data)[2], numRsmps = numExperiments)
+  colnames(resampledDataNull) <- colNames
 
   return(resampledDataNull)
 }

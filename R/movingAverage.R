@@ -7,18 +7,17 @@
 #' @return double
 #' @export
 #'
-movingAverage <- function(x, n=1, centered=FALSE) {
-
+movingAverage <- function(x, n = 1, centered = FALSE) {
   if (centered) {
-    before <- floor  ((n-1)/2)
-    after  <- ceiling((n-1)/2)
+    before <- floor((n - 1) / 2)
+    after <- ceiling((n - 1) / 2)
   } else {
-    before <- n-1
-    after  <- 0
+    before <- n - 1
+    after <- 0
   }
 
   # Track the sum and count of number of non-NA items
-  s     <- rep(0, length(x))
+  s <- rep(0, length(x))
   count <- rep(0, length(x))
 
   # Add the centered data
@@ -33,28 +32,28 @@ movingAverage <- function(x, n=1, centered=FALSE) {
   i <- 1
   while (i <= before) {
     # This is the vector with offset values to add
-    new   <- c(rep(NA, i), x[1:(length(x)-i)])
+    new <- c(rep(NA, i), x[1:(length(x) - i)])
 
     count <- count + !is.na(new)
     new[is.na(new)] <- 0
     s <- s + new
 
-    i <- i+1
+    i <- i + 1
   }
 
   # Add the data from after
   i <- 1
   while (i <= after) {
     # This is the vector with offset values to add
-    new   <- c(x[(i+1):length(x)], rep(NA, i))
+    new <- c(x[(i + 1):length(x)], rep(NA, i))
 
     count <- count + !is.na(new)
     new[is.na(new)] <- 0
     s <- s + new
 
-    i <- i+1
+    i <- i + 1
   }
 
   # return sum divided by count
-  return(s/count)
+  return(s / count)
 }

@@ -15,7 +15,7 @@ movingAverageDF <- function(data){
 
   #smooth the data with an moving average filter
   dataDenoise <- apply(data, 1, function(TS) {
-    movingAverage(x = as.numeric(TS), n = round(length(TS)/8), centered = T)
+    movingAverage(x = as.numeric(TS), n = 3, centered = T)
   })
 
   output <- as.data.frame(t(as.data.frame(dataDenoise)))

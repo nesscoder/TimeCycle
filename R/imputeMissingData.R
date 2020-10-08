@@ -8,16 +8,15 @@
 #' @export
 #'
 #' @examples
-#' a <- c(10,12,14,NA,18)
-#' b <- c(1,2,NA,NA,5)
-#' data <- t(data.frame(a,b))
+#' a <- c(10, 12, 14, NA, 18)
+#' b <- c(1, 2, NA, NA, 5)
+#' data <- t(data.frame(a, b))
 #' imputeMissingData(data)
-imputeMissingData <- function(data){
-
+imputeMissingData <- function(data) {
   colNames <- colnames(data)
   rowNames <- rownames(data)
 
-  out <- t(apply(data,1,function(geneExpr){
+  out <- t(apply(data, 1, function(geneExpr) {
     x <- as.numeric(geneExpr)
     imputed <- imputeTS::na_interpolation(x)
   }))
@@ -26,5 +25,4 @@ imputeMissingData <- function(data){
   rownames(out) <- rowNames
 
   return(out)
-
 }
