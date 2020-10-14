@@ -12,7 +12,7 @@ output:
 
 <img src="./../man/figures/logo.png" align="right"/>
 
-> The following describes the theory and provides example usage of TimeCycle. For a comprehensive analysis and discussion of TimeCycle's performance in detecting rhythmic genes, see the accompanying [paper](INSERT PAPER LINK). For details pertaining to the data and source code used in the analysis, see our [GitHub page](INSERT GITHUB LINK).
+> The following describes the theory and provides example usage of TimeCycle. For a comprehensive analysis and discussion of TimeCycle's performance in detecting rhythmic genes, see the accompanying [paper](INSERT%20PAPER%20LINK). For details pertaining to the data and source code used in the analysis, see our [GitHub page](INSERT%20GITHUB%20LINK).
 
 ------------------------------------------------------------------------
 
@@ -27,69 +27,148 @@ library(rmarkdown)
 
 ## **Theory**
 
-```{r, echo=F, out.width="75%", fig.cap="A nice image.", out.extra='style="border: 0px;"'}
+### Algorithm Design Overview
+
+```{r, echo=F, out.width="75%", fig.cap=" ", out.extra='style="border: 0px;"'}
 
 knitr::include_graphics(path="./../man/figures/overview.png")
                        
 ```
 
+***
+
 ### Takens' Theorem
 
-```{r, echo=F, out.width="50%", fig.cap="A nice image.", out.extra='style="border: 0px;"'}
+```{r, echo=F, out.width="50%", fig.cap=" ", out.extra='style="border: 0px;"'}
 
 knitr::include_graphics(path="./../man/figures/takens.png")
                        
 ```
 
+The dynamics of a periodic signal will exhibit circular patterns in the embedded space.
+
+-   An embedded periodic function (Right-Top Panel) forms a circle.
+
+-   An embedded non-periodic function (Right-Bottom Panel) forms a mass.
+
+We can exploit this property for cycling detection by quantifying the circularity of data in the embedded space.
+
+
+***
+
 ### 3-D Time-Delay Embedding
 
-```{r, echo=F, out.width="50%", fig.cap="A nice image.", out.extra='style="border: 0px;"'}
+```{r, echo=F, out.width="50%", fig.cap=" ", out.extra='style="border: 0px;"'}
 
 knitr::include_graphics(path="./../man/figures/Embedding3D.gif")
                        
 ```
 
+3-D embedding can encapsulate more dynamical history and enable periodic and non-periodic components to be separated
+
+
+***
+
 ### Detrending Via Dimension Reduction
 
-```{r, echo=F, out.width="50%", fig.cap="A nice image.", out.extra='style="border: 0px;"'}
+```{r, echo=F, out.width="50%", fig.cap=" ", out.extra='style="border: 0px;"'}
 
 knitr::include_graphics(path="./../man/figures/dimreduction.png")
                        
 ```
 
+- Dampened and trending signals form spirals and helices in the embedded space
+
+- Non-LinearDimension Reduction --- Laplacian Eigenmap --- is used to articulate the underlying circular manifold. 
+
+- As helices maintain a cyclic pattern at an adjusted point in space, the Laplacian Eigenmap preserves the local circular geometry of the 3-D helix in a 2-D space.
+
+- By removing the linear component, the circular (periodic) component is recovered
+
+***
+
 ### Persistent Homology
 
-Words above
-
-```{r, echo=FALSE, out.width="50%", fig.cap="A nice image.", out.extra='style="border: 0px;"'}
+```{r, echo=FALSE, out.width="50%", fig.cap="d", out.extra='style="border: 0px;"'}
 
 knitr::include_graphics(path="./../man/figures/PSH.gif")
                        
 ```
 
-words below
+Goal: Parameterize circularity of the embedded points
+Method: Connect points if they are at least a diameter d apart
+
+- A topological cycle appears at some $d_{birth}$ and disappears at $d_{death}$
+
+- The Persistence = $d_{death}$ – $d_{birth}$
+
+- More circular embeddings have larger difference between events
+
+By Consequence of Takens’ Theorem:
+
+- Periodic signal have high persistence, while non-periodic signals have low persistence
+
+
+***
 
 ### The Null Distribution
 
+Goal: Generate Biologically relevant null distribution for hypothesis testing
+Method: Construct null distribution from resampling of observed data
+
+- Compute difference between consecutive time-points in observed data
+
+- Resample differences with replacement to form random time-series
+
+- Compare persistence between observed and resampled time-series
+
+Significance Definition: 
+
+- By random chance, how often will you see a gene cycling, at a specific frequency, with a persistence as or more extreme than the observed gene’s persistence
+
+***
+
 ### Pre-Processing and Normalization For Computational Efficiency
+
+As stated in the [algorithm design overview](TimeCycle.html#algorithm-design-overview-1), TimeCycle is divided into two independent analyses: Cycle detection and parameter estimation. In the cycle detection analysis, genes are mean center and scaled; removing variation as a result of expression. By scaling gene expression, the same null distribution can be used for significance testing across all genes --- decreasing the computation load in comparison to the alternative of not scaling and needing to generate a null distribution for each gene. When performing the less computationally costly parameter estimation, the rescaling procedure is omitted to preserve amplitude measures.
+
+***
 
 ### FFT Period Estimation
 
-------------------------------------------------------------------------
+```{r, echo=FALSE, out.width="90%", fig.cap=" ", out.extra='style="border: 0px;"'}
+
+knitr::include_graphics(path="./../man/figures/fft.png")
+                       
+```
+
+Prior to estimation, signals are linearly detrended and smoothed via a moving average before fitting the signal to the first three harmonics of the fast Fourier transform (FFT). The period, phase, and amplitude are computed from the FFT fit.
+
+***
+***
 
 ## **Usage**
 
 ### Parameter Selection
 
-### Replicate Labels{#repLab}
+***
+
+### Replicate Labels {#repLab}
+
+***
 
 ### Short Time-Series
 
+***
+
 ### Sparsely Sampled Data
+
+***
 
 ### Linear Trending Signals
 
+***
+
 ### Computational Efficiency
 
-- Show plot of linear efficiency
-
+-   Show plot of linear efficiency
