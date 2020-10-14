@@ -29,7 +29,8 @@ Imports:
     parallel,
     TDA,
     imputeTS,
-    stats
+    stats,
+    tidyverse
 Suggests: 
     knitr,
     rmarkdown
