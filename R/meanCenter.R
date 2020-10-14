@@ -1,8 +1,10 @@
-#' mean center the data by Row
+#' Mean Centers a \code{data.frame}
 #'
-#' @param df double
+#' Mean centers a \code{data.frame} by row.
 #'
-#' @return double
+#' @param  df a \code{data.frame} of \code{numerics}.
+#'
+#' @return a mean center \code{data.frame} of \code{numerics} by row.
 #' @export
 #'
 meanCenter <- function(df){

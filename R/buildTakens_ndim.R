@@ -1,18 +1,17 @@
-#' Generates Taken Embedding
+#' Generates Takens' Embedding For a Time-Series
 #'
-#' Generates the Takens Embedding given a specified delay and dimension
+#' Generates the Takens' embedding for a time-series given a specified delay (i.e. lag) and dimension (i.e. 2-D or 3-D).
 #'
-#' @param x int
-#' @param dim int
-#' @param delay int
-#' @param indices boolean
-#' @param as.embed boolean
+#' @param x a \code{vector} of \code{numeric} time-series expression values.
+#' @param dim a \code{numeric} specifying the dimension to use for in the time-delayed embedding (i.e. 2-D or 3-D).
+#' @param delay a \code{numeric} specifying the lag to use for in the n-dimensional time delayed embedding specified by \code{dim}.
 #'
-#' @return
+#' @seealso \code{\link{getPersistence}}.
+#' @return a \code{data.frame} of the n-dimensional Takens' embedding. Columns defined from (1-D to n-D).
 #' @export
 #'
 #'
-buildTakens_ndim <- function(x, dim, delay = 1, indices = FALSE, as.embed = FALSE) {
+buildTakens_ndim <- function(x, dim, delay = 1) {
   n <- length(x) - (dim - 1) * delay
   X <- seq_along(x)
   if (n <= 0) {
@@ -21,12 +20,6 @@ buildTakens_ndim <- function(x, dim, delay = 1, indices = FALSE, as.embed = FALS
   out <- matrix(rep(X[seq_len(n)], dim), ncol = dim)
   out[, -1] <- out[, -1, drop = FALSE] +
     rep(seq_len(dim - 1) * delay, each = nrow(out))
-  if (as.embed) {
-    out <- out[, rev(seq_len(ncol(out)))]
-  }
-  if (!indices) {
-    out <- matrix(x[out], ncol = dim)
-  }
 
   return(out)
 }

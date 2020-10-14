@@ -2,24 +2,55 @@
 % Please edit documentation in R/computePersistence.R
 \name{computePersistence}
 \alias{computePersistence}
-\title{computePersistence2.0}
+\title{Computes Persistence Scores For a Data.Frame of Time-Series Across Multiple Lags}
 \usage{
-computePersistence(data, minLag = 2, maxLag = 5, cores = 1, laplacian = T)
+computePersistence(
+  data,
+  minLag = 2,
+  maxLag = 5,
+  cores = parallel::detectCores() - 2,
+  laplacian = T
+)
 }
 \arguments{
-\item{data}{int}
+\item{data}{a \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times).}
 
-\item{minLag}{int}
+\item{minLag}{a \code{numeric} specifying the min lag to check in the 3-D embedding. Default is \code{2}.}
 
-\item{maxLag}{int}
+\item{maxLag}{a \code{numeric} specifying the max lag to check in the 3-D embedding. Default is \code{5}.}
 
-\item{cores}{int}
+\item{cores}{a \code{numeric} specifying the number of parallel cores to use. Default number of cores is \code{parallel::detectedCores() - 2}.}
 
-\item{laplacian}{boolean}
+\item{laplacian}{a \code{logical} scalar. Should the Laplacian Eigenmaps be used for dimensionality reduction? Default \code{TRUE}.}
 }
 \value{
-int
+a \code{vector} of the median persistence score across lags (minLag to maxLag) for each gene in data
 }
 \description{
-Returns the Lag with the Top Persistence Score
+Takes a \code{data.frame} of numeric gene expression over time (genes X ZT times) and computes the persistence score using \code{\link{getPersistence}}.
+For a given gene, each lag (min to max) is used to transform the expression into a 3-D embedded space via time-delay embedding.
+A non-linear dimension reduction technique (laplacian eigenmaps) is used to transfrom the 3-D embedding to a 2-D embedding.
+Finally, the persistence score of the 2-D embedding is calculated via persistence homology.
+The median persistence score across all lags (min to max) for each gene is returned as a numeric vector.
+For more details see TimeCycle's vignette:
+\code{vignette("TimeCycle")}.
+}
+\references{
+{
+   \itemize{
+     \item Fasy, Brittany & Kim, Jisu & Lecci, Fabrizio & Maria, Clément. (2014). "Introduction to the R package TDA".
+     \item Maria C (2014). "GUDHI, Simplicial Complexes and Persistent Homology Packages." \url{ https://project.inria.fr/gudhi/software/ }.
+     \item Morozov D (2007). "Dionysus, a C++ library for computing persistent homology". \url{ http://www.mrzv.org/software/dionysus/ }
+     \item Edelsbrunner H, Harer J (2010). "Computational topology: an introduction." American Mathematical Society.
+     \item Fasy B, Lecci F, Rinaldo A, Wasserman L, Balakrishnan S, Singh A (2013). "Statistical Inference For Persistent Homology." (arXiv:1303.7117). Annals of Statistics.
+   }
+}
+}
+\seealso{
+\itemize{
+     \item \code{\link[TDA]{ripsDiag}} for Persistence Homology calculation.
+     \item \code{\link{buildTakens_ndim}} for for generating time-delay embedding.
+     \item \code{\link{computeLaplacianEmbedding}} for 3-D to 2-D laplacian eigenmaps dimension reduction.
+     \item \code{\link{getPersistence}} for use on a single gene expression time-series.
+}
 }

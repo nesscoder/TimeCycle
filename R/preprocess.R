@@ -11,7 +11,7 @@ preprocess <- function(data) {
   data <- as.data.frame(data)
 
   # Smooth Data with sgolay filter
-  dataSmooth <- smoothData.sgolay(data)
+  dataSmooth <- preprocess_sgolay(data)
 
   # mean center the data
   dataCenter <- meanCenter(dataSmooth)

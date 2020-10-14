@@ -1,11 +1,15 @@
-#' getRepAvgedDataFrame
+#' Handles Sample Replicates in a \code{data.frame} of Time-Series
 #'
-#' averages expr values within replicate groups by row in a dataframe
+#' Averages expression values for a single time-series across replicate groups in a \code{data.frame}.
 #'
-#' @param data double dataframe /Rows = Genes, Column = Sample ZT/
-#' @param repLabel int
 #'
-#' @return
+#' @param data a \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times).
+#' @param repLabel a \code{vector} defining the number of replicates at each time point.
+#'
+#' @return a \code{data.frame} of average  \code{numeric} time-series expression values by replicate time-points for each gene.
+#'
+#' @seealso \code{\link{averageReps}}
+#'
 #' @export
 #'
 getRepAvgedDataFrame <- function(data, repLabel) {

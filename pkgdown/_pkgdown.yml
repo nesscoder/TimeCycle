@@ -1,0 +1,45 @@
+authors:
+  Elan Ness-Cohn:
+    href: "https://sites.northwestern.edu/elannesscohn/"
+  Ravi Allada:
+    href: "https://neurobiology.northwestern.edu/people/core-faculty/ravi-allada.html"
+  Rosemary Braun:
+    href: "https://sites.northwestern.edu/braunlab/"
+  NSF-Simons Center For Quatitative Biology:
+    href: "https://www.quantitativebiology.northwestern.edu/"
+    html: "<img src='./../man/figures/QBio.png' height=40>"
+    
+development:
+  mode: auto
+
+reference:
+- title: "Main Function"
+- contents:
+  - TimeCycle
+- title: "Example Data"
+- contents:
+  - zhang2014
+- title: "Internal Helper Functions"
+- contents:
+  - averageReps
+  - buildTakens_ndim
+  - computeLaplacianEmbedding
+  - computePersistence
+  - detrend
+  - getFFT
+  - getPersistence
+  - getRepAvgedDataFrame
+  - getTimeSpan
+  - imputeMissingData
+  - matrixLaplacian
+  - meanCenter
+  - movingAverage
+  - movingAverageDF
+  - nullResampling
+  - periodFinder
+  - preprocess
+  - preprocess_acf
+  - preprocess_sgolay
+  - resampleTimeSeries
+  - scaleTimeSeries
+

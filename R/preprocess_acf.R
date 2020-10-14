@@ -19,7 +19,7 @@ preprocess_acf <- function(data, period = 24){
   maxAcfLag <- min(dim(data)[2]-1, 2*period/interval)
   output <- apply(data, 1, function(ts){
     ts <- unlist(unname(ts))
-    corr <- acf(as.vector(ts), lag = maxAcfLag, plot = F, type = "covariance")
+    corr <- stats::acf(as.vector(ts), lag = maxAcfLag, plot = F, type = "covariance")
     corr <- as.vector(corr$acf)
     corr <- scale(corr)
 

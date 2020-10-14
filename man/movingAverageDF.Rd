@@ -2,16 +2,19 @@
 % Please edit documentation in R/movingAverageDF.R
 \name{movingAverageDF}
 \alias{movingAverageDF}
-\title{movingAverageDF}
+\title{Computes the Moving Average By Row in a \code{data.frame} of Time-Series}
 \usage{
 movingAverageDF(data)
 }
 \arguments{
-\item{data}{double DataFrame /Rows = Genes, Column = Sample ZT/}
+\item{data}{a \code{data.frame} of \code{numeric} time-series expression values.}
 }
 \value{
-double DataFrame /Rows = Genes, Column = Sample ZT/
+a \code{data.frame} containing the smoothed \code{numeric} moving average time-series expression values by row.
 }
 \description{
-Computes the moving average across TimeSeries in a data frame
+Computes the moving average about each time-series in a \code{data.frame}.
+}
+\seealso{
+\code{\link{movingAverage}} for parameter definitions
 }

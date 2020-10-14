@@ -2,18 +2,21 @@
 % Please edit documentation in R/getFFT.R
 \name{getFFT}
 \alias{getFFT}
-\title{getFfT}
+\title{Computes the Fast Fourier Transform of a Time-Series}
 \usage{
 getFFT(y, sampFreq)
 }
 \arguments{
-\item{y}{double}
+\item{y}{a \code{vector} of numeric time-series expression values.}
 
-\item{sampFreq}{double}
+\item{sampFreq}{a \code{vector} of numeric frequencies.}
 }
 \value{
-
+a \code{data.frame} harmonic fits by frequency.
 }
 \description{
-computes the fast Fourier Transform of a Time series
+Takes a time-series and sample frequency and computes the fast Fourier transform of the time-series.
+}
+\seealso{
+\code{\link[stats]{fft}}
 }

@@ -2,16 +2,22 @@
 % Please edit documentation in R/computeLaplacianEmbedding.R
 \name{computeLaplacianEmbedding}
 \alias{computeLaplacianEmbedding}
-\title{computeLaplacianEmbedding}
+\title{Computes the Laplacian Eigenmap For Dimension Reduction}
 \usage{
 computeLaplacianEmbedding(takens)
 }
 \arguments{
-\item{takens}{double}
+\item{takens}{a \code{data.frame} of the n-dimensional Takens' embedding. Columns defined from (1-D to n-D). TimeCycle defaults to \code{n = 3}.}
 }
 \value{
-double
+a \code{data.frame} of the 2-dimensional Takens' embedding. Columns defined by eigen vectors with last two non-trivial eigen values.
 }
 \description{
-Compute the Laplacian Embedding about the merged Takens embedding
+Takes a  n-D Takens' Embedding and returns the 2-D Laplacian Eigenmap.
+}
+\seealso{
+\itemize{
+     \item \code{\link{getPersistence}} for usage
+     \item \code{\link{matrixLaplacian}} for defining laplacian eigenmaps.
+}
 }

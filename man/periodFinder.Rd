@@ -2,18 +2,25 @@
 % Please edit documentation in R/periodFinder.R
 \name{periodFinder}
 \alias{periodFinder}
-\title{periodFinder}
+\title{Estimates the period, amp, and phase of a \code{data.frame} of time-series}
 \usage{
-periodFinder(data, plotFit = F)
+periodFinder(data)
 }
 \arguments{
-\item{data}{double dataframe (row = genes, col = timepoints)}
-
-\item{plotFit}{boolean}
+\item{data}{a \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times).}
 }
 \value{
-
+a \code{data.frame} of \code{numeric} period, amplitude, and phase estimates for each gene.
 }
 \description{
-Computes the period, amp, and phase of a dataframe of time series
+Estimates the period, amp, and phase of a \code{data.frame} of time-series via fast Fourier transform (FFT).
+A model fit for the time-series is generated using the first 3 harmonics. The period, amp, and phase are
+computed based on the aggregate fit.
+}
+\seealso{
+\itemize{
+     \item \code{\link{getFFT}} for FFT calculation.
+     \item \code{\link{detrend}} for linear detrending of time-series prior to periodFinder processing.
+     \item \code{\link{movingAverageDF}} for smoothing of time-series prior to periodFinder processing.
+}
 }

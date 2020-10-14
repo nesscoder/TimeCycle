@@ -2,24 +2,23 @@
 % Please edit documentation in R/buildTakens_ndim.R
 \name{buildTakens_ndim}
 \alias{buildTakens_ndim}
-\title{Generates Taken Embedding}
+\title{Generates Takens' Embedding For a Time-Series}
 \usage{
-buildTakens_ndim(x, dim, delay = 1, indices = FALSE, as.embed = FALSE)
+buildTakens_ndim(x, dim, delay = 1)
 }
 \arguments{
-\item{x}{int}
+\item{x}{a \code{vector} of \code{numeric} time-series expression values.}
 
-\item{dim}{int}
+\item{dim}{a \code{numeric} specifying the dimension to use for in the time-delayed embedding (i.e. 2-D or 3-D).}
 
-\item{delay}{int}
-
-\item{indices}{boolean}
-
-\item{as.embed}{boolean}
+\item{delay}{a \code{numeric} specifying the lag to use for in the n-dimensional time delayed embedding specified by \code{dim}.}
 }
 \value{
-
+a \code{data.frame} of the n-dimensional Takens' embedding. Columns defined from (1-D to n-D).
 }
 \description{
-Generates the Takens Embedding given a specified delay and dimension
+Generates the Takens' embedding for a time-series given a specified delay (i.e. lag) and dimension (i.e. 2-D or 3-D).
+}
+\seealso{
+\code{\link{getPersistence}}.
 }

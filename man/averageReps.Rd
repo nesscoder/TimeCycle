@@ -2,24 +2,27 @@
 % Please edit documentation in R/averageReps.R
 \name{averageReps}
 \alias{averageReps}
-\title{averageReps}
+\title{Handles Sample Replicates in Single Time-Series}
 \usage{
 averageReps(geneExpr, Reps)
 }
 \arguments{
-\item{geneExpr}{double}
+\item{geneExpr}{a \code{vector} of \code{numeric} time-series expression values with replicates.}
 
-\item{Reps}{int}
+\item{Reps}{a \code{vector} defining the number of replicates at each time point.}
 }
 \value{
-double
+a \code{vector} of average  \code{numeric} time-series expression values by replicate time-points.
 }
 \description{
-averages expr values within replicate groups
+Averages expression values for a single time-series across replicate groups.
 }
 \examples{
 
 geneExpr <- c(1, 5, 3, 4, 5, 8)
 reps <- c(2, 3, 1)
 averageReps(geneExpr = geneExpr, Reps = reps)
+}
+\seealso{
+\code{\link{getRepAvgedDataFrame}}
 }

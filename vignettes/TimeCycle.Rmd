@@ -1,19 +1,95 @@
 ---
-title: "TimeCycle"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{TimeCycle}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+title: "TimeCycle - Theory and Usage"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 6
+    vignette: >
+      %\VignetteIndexEntry{TimeCycle - Theory and Usage}
+      %\VignetteEngine{knitr::rmarkdown}
+      %\VignetteEncoding{UTF-8}
 ---
+
+<img src="./../man/figures/logo.png" align="right"/>
+
+> The following describes the theory and provides example usage of TimeCycle. For a comprehensive analysis and discussion of TimeCycle's performance in detecting rhythmic genes, see the accompanying [paper](INSERT PAPER LINK). For details pertaining to the data and source code used in the analysis, see our [GitHub page](INSERT GITHUB LINK).
+
+------------------------------------------------------------------------
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.align = "center"
 )
+library(rmarkdown)
 ```
 
-```{r setup}
-#library(TimeCycle)
+## **Theory**
+
+```{r, echo=F, out.width="75%", fig.cap="A nice image.", out.extra='style="border: 0px;"'}
+
+knitr::include_graphics(path="./../man/figures/overview.png")
+                       
 ```
+
+### Takens' Theorem
+
+```{r, echo=F, out.width="50%", fig.cap="A nice image.", out.extra='style="border: 0px;"'}
+
+knitr::include_graphics(path="./../man/figures/takens.png")
+                       
+```
+
+### 3-D Time-Delay Embedding
+
+```{r, echo=F, out.width="50%", fig.cap="A nice image.", out.extra='style="border: 0px;"'}
+
+knitr::include_graphics(path="./../man/figures/Embedding3D.gif")
+                       
+```
+
+### Detrending Via Dimension Reduction
+
+```{r, echo=F, out.width="50%", fig.cap="A nice image.", out.extra='style="border: 0px;"'}
+
+knitr::include_graphics(path="./../man/figures/dimreduction.png")
+                       
+```
+
+### Persistent Homology
+
+Words above
+
+```{r, echo=FALSE, out.width="50%", fig.cap="A nice image.", out.extra='style="border: 0px;"'}
+
+knitr::include_graphics(path="./../man/figures/PSH.gif")
+                       
+```
+
+words below
+
+### The Null Distribution
+
+### Pre-Processing and Normalization For Computational Efficiency
+
+### FFT Period Estimation
+
+------------------------------------------------------------------------
+
+## **Usage**
+
+### Parameter Selection
+
+### Replicate Labels
+
+### Short Time-Series
+
+### Sparsely Sampled Data
+
+### Linear Trending Signals
+
+### Computational Efficiency
+
+- Show plot of linear efficiency
+

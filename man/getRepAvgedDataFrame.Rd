@@ -2,18 +2,21 @@
 % Please edit documentation in R/getRepAvgedDataFrame.R
 \name{getRepAvgedDataFrame}
 \alias{getRepAvgedDataFrame}
-\title{getRepAvgedDataFrame}
+\title{Handles Sample Replicates in a \code{data.frame} of Time-Series}
 \usage{
 getRepAvgedDataFrame(data, repLabel)
 }
 \arguments{
-\item{data}{double dataframe /Rows = Genes, Column = Sample ZT/}
+\item{data}{a \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times).}
 
-\item{repLabel}{int}
+\item{repLabel}{a \code{vector} defining the number of replicates at each time point.}
 }
 \value{
-
+a \code{data.frame} of average  \code{numeric} time-series expression values by replicate time-points for each gene.
 }
 \description{
-averages expr values within replicate groups by row in a dataframe
+Averages expression values for a single time-series across replicate groups in a \code{data.frame}.
+}
+\seealso{
+\code{\link{averageReps}}
 }

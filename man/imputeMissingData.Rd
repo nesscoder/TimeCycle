@@ -2,22 +2,25 @@
 % Please edit documentation in R/imputeMissingData.R
 \name{imputeMissingData}
 \alias{imputeMissingData}
-\title{ImputeMissingData}
+\title{Imputates Missing Time-Points in Data}
 \usage{
 imputeMissingData(data)
 }
 \arguments{
-\item{data}{df (Col = Genes, Row = TimePoints)}
+\item{data}{a \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times) with missing values.}
 }
 \value{
-
+a imputed \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times).
 }
 \description{
-Imputes NA in the data frame by computing the linear path between missing points
+Imputes NA in \code{data.frame} by computing the linear path between missing points
 }
 \examples{
 a <- c(10, 12, 14, NA, 18)
 b <- c(1, 2, NA, NA, 5)
 data <- t(data.frame(a, b))
 imputeMissingData(data)
+}
+\seealso{
+\code{\link[imputeTS]{na_interpolation}} for imputation procedure.
 }

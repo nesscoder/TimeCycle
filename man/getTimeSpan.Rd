@@ -2,21 +2,21 @@
 % Please edit documentation in R/getTimeSpan.R
 \name{getTimeSpan}
 \alias{getTimeSpan}
-\title{Get Differene Between Start Time and End Time}
+\title{Computes Algorithm Run Time}
 \usage{
 getTimeSpan(start, end)
 }
 \arguments{
-\item{start}{double}
+\item{start}{a \code{numeric} defining the algorithm start time.}
 
-\item{end}{double}
+\item{end}{a \code{numeric} defining the algorithm end time.}
 }
 \value{
-double
+a \code{numeric} defining the algorithm run time.
 }
 \description{
-Converts System Time Differences to
-hh:mm:ss format
+Converts system time difference between TimeCycle's start and end time to
+hh:mm:ss format.
 }
 \examples{
 getTimeSpan(Sys.time(), Sys.time() + 600)

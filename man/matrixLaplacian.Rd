@@ -2,20 +2,19 @@
 % Please edit documentation in R/matrixLaplacian.R
 \name{matrixLaplacian}
 \alias{matrixLaplacian}
-\title{Compute Matrix Laplacian About Takens Embedding}
+\title{Computes Laplacian Eigenmaping}
 \usage{
-matrixLaplacian(A, plot2D = FALSE, plot3D = FALSE)
+matrixLaplacian(A)
 }
 \arguments{
-\item{A}{int}
-
-\item{plot2D}{boolean}
-
-\item{plot3D}{boolean}
+\item{A}{a distance \code{matrix} of the n-dimensional Takens' embedding.}
 }
 \value{
-
+a \code{list} of the laplacian matrix and eigenvectors.
 }
 \description{
-Compute Matrix Laplacian About Takens Embedding
+Computes the Laplacian matrix and eigenvectors of the n-D Takens' embedding.
+}
+\seealso{
+\code{\link{computeLaplacianEmbedding}}
 }

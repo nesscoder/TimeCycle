@@ -2,18 +2,23 @@
 % Please edit documentation in R/nullResampling.R
 \name{nullResampling}
 \alias{nullResampling}
-\title{Null Resampling}
+\title{Generates a \code{data.frame} of Resampled Time-Series for Computing the Null Distribution}
 \usage{
-nullResampling(data, numExperiments)
+nullResampling(data, numExperiments = 10000)
 }
 \arguments{
-\item{data}{double dataframe /Rows = Genes, Column = Sample ZT/}
+\item{data}{a \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times).}
 
-\item{numExperiments}{int number of Resamplings to perform}
+\item{numExperiments}{a \code{numeric} specifying the number of resampling to use in the null-distribution. Default is \code{10000}.}
 }
 \value{
-double dataframe /Rows = Genes, Column = Sample ZT/
+a \code{data.frame} of \code{numeric} resampled time-series (row = numExperiments \emph{x} col = ZT times).
 }
 \description{
-Generates a null resampling as defined by rhe difference between consecutive points across all time series
+Generates a \code{data.frame} null resampling time-series as defined by the difference between consecutive points across all time-series.
+For additional information about the null distribution used by TimeCycle, see TimeCycle's vignette:
+\code{vignette("TimeCycle")}.
+}
+\seealso{
+\code{\link{resampleTimeSeries}}
 }

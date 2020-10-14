@@ -1,11 +1,13 @@
-#' ImputeMissingData
+#' Imputates Missing Time-Points in Data
 #'
-#' Imputes NA in the data frame by computing the linear path between missing points
+#' Imputes NA in \code{data.frame} by computing the linear path between missing points
 #'
-#' @param data df (Col = Genes, Row = TimePoints)
+#' @param data a \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times) with missing values.
 #'
-#' @return
+#' @return a imputed \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times).
 #' @export
+#'
+#' @seealso \code{\link[imputeTS]{na_interpolation}} for imputation procedure.
 #'
 #' @examples
 #' a <- c(10, 12, 14, NA, 18)

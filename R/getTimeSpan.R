@@ -1,12 +1,12 @@
-#' Get Differene Between Start Time and End Time
+#' Computes Algorithm Run Time
 #'
-#' Converts System Time Differences to
-#' hh:mm:ss format
+#' Converts system time difference between TimeCycle's start and end time to
+#' hh:mm:ss format.
 #'
-#' @param start double
-#' @param end double
+#' @param start a \code{numeric} defining the algorithm start time.
+#' @param end a \code{numeric} defining the algorithm end time.
 #'
-#' @return double
+#' @return a \code{numeric} defining the algorithm run time.
 #' @export
 #'
 #' @examples

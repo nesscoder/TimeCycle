@@ -2,20 +2,24 @@
 % Please edit documentation in R/resampleTimeSeries.R
 \name{resampleTimeSeries}
 \alias{resampleTimeSeries}
-\title{resampleTimeSeries}
+\title{Generates a \code{data.frame} of Resampled Time-Series}
 \usage{
 resampleTimeSeries(distTP, numTP, numRsmps)
 }
 \arguments{
-\item{distTP}{double}
+\item{distTP}{a \code{data.frame} of \code{numeric} values.}
 
-\item{numTP}{int}
+\item{numTP}{a \code{numeric} specifying the number of columns in the outputted \code{data.frame}.}
 
-\item{numRsmps}{int}
+\item{numRsmps}{a \code{numeric} specifying the number of rows in the outputted \code{data.frame}.}
 }
 \value{
-int dataframe
+a \code{data.frame} of randomly sampled \code{numerics} time-series (row = \code{numRsamps} \emph{x} col = \code{numTP}).
 }
 \description{
-Takes a dataframe of expr values and generates a resampling of the data used for parametric testing
+Converts a \code{data.frame} of \code{numeric} values into a single vector and generates a random resampling with dimension
+\code{numRsmps} by \code{numTP}.
+}
+\seealso{
+\code{\link{nullResampling}}
 }

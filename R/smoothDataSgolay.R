@@ -1,4 +1,4 @@
-#' smoothData.sgolay
+#' preprocess_sgolay
 #'
 #' Smooth Data Using Savitzky–Golay filter
 #'
@@ -7,7 +7,7 @@
 #' @return double Savitzky-Golay Filtered by Row
 #' @export
 #'
-smoothData.sgolay <- function(data) {
+preprocess_sgolay <- function(data) {
   sampleNames <- rownames(data)
   colNames <- colnames(data)
 

@@ -1,13 +1,18 @@
-#' movingAverage
+#' Computes the Moving Average of a Single Time-Series
 #'
-#' @param x double the time series
-#' @param n int the number of points to use in the moving average
-#' @param centered boolean
+#' Computes the moving average about a time-series defined by a specified number of points.
 #'
-#' @return double
+#' @param x a \code{vector} of \code{numeric} time-series expression values.
+#' @param n a \code{numeric} specifying the number of points to use in the moving average. Default \code{n = 3}.
+#' @param centered a \code{logical} scalar. Should the moving average be centered about the current points? Default \code{TRUE} (i.e. average of current point (\code{p}) with  \code{p - n/2} and \code{p + n/2}).
+#'
+#' @return a \code{vector} containing the smoothed \code{numeric} moving average time-series expression values.
+#'
+#' @seealso \code{\link{movingAverageDF}}
+#'
 #' @export
 #'
-movingAverage <- function(x, n = 1, centered = FALSE) {
+movingAverage <- function(x, n = 3, centered = TRUE) {
   if (centered) {
     before <- floor((n - 1) / 2)
     after <- ceiling((n - 1) / 2)

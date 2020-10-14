@@ -1,11 +1,13 @@
-#' movingAverageDF
+#' Computes the Moving Average By Row in a \code{data.frame} of Time-Series
 #'
-#' Computes the moving average across TimeSeries in a data frame
+#' Computes the moving average about each time-series in a \code{data.frame}.
 #'
+#' @param data a \code{data.frame} of \code{numeric} time-series expression values.
 #'
-#' @param data double DataFrame /Rows = Genes, Column = Sample ZT/
+#' @return a \code{data.frame} containing the smoothed \code{numeric} moving average time-series expression values by row.
 #'
-#' @return double DataFrame /Rows = Genes, Column = Sample ZT/
+#' @seealso \code{\link{movingAverage}} for parameter definitions
+#'
 #' @export
 #'
 movingAverageDF <- function(data){

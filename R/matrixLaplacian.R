@@ -1,13 +1,16 @@
-#' Compute Matrix Laplacian About Takens Embedding
+#' Computes Laplacian Eigenmaping
 #'
-#' @param A int
-#' @param plot2D boolean
-#' @param plot3D boolean
+#' Computes the Laplacian matrix and eigenvectors of the n-D Takens' embedding.
 #'
-#' @return
+#' @param A a distance \code{matrix} of the n-dimensional Takens' embedding.
+#'
+#' @return a \code{list} of the laplacian matrix and eigenvectors.
+#'
+#' @seealso \code{\link{computeLaplacianEmbedding}}
+#'
 #' @export
 #'
-matrixLaplacian <- function(A, plot2D = FALSE, plot3D = FALSE) {
+matrixLaplacian <- function(A) {
   B <- A
   D <- matrix(0, nrow = dim(A)[1], ncol = dim(A)[1])
   diag(D) <- B %*% rep(1, dim(A)[1])
@@ -15,15 +18,7 @@ matrixLaplacian <- function(A, plot2D = FALSE, plot3D = FALSE) {
   Q <- D %*% B %*% D
   N <- diag(1, dim(Q)[1]) - Q
   Eigen <- eigen(N)$vectors
-  if (plot2D) {
-    plot(Eigen[, 1], Eigen[, 2], xlab = "", ylab = "")
-  }
-  if (plot3D) {
-    scatterplot3d::scatterplot3d(Eigen[, 1], Eigen[, 2], Eigen[, 3],
-      xlab = "",
-      ylab = "", zlab = ""
-    )
-  }
+
   object <- list(LaplacianMatrix = N, eigenvector = Eigen)
   return(object)
 }

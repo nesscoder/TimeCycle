@@ -1,10 +1,14 @@
-#' Detrend
+#' Linearly Detrends a \code{data.frame} of Gene Expression Time-Series
 #'
-#' Detrend Data by fiting a linear model and removing the linear trend
+#' Detrends a \code{data.frame} of gene expression over time (row = genes \emph{x} col = ZT times)
+#' by fiting a linear model to each gene and removing the linear trend.
 #'
-#' @param data double dataframe /Rows = Genes, Column = Sample ZT/
+#' @param data a \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times).
 #'
-#' @return double detrended dataframe /Rows = Genes, Column = Sample ZT/
+#' @return a detrended \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times).
+#'
+#' @seealso \code{\link{periodFinder}}
+#'
 #' @export
 #'
 detrend <- function(data){
@@ -16,7 +20,7 @@ detrend <- function(data){
 
   #Use timeseries to compute the trend fit
   dataDetrend <- apply(data, 1, function(TS) {
-    fit <- lm(TS~xVals)
+    fit <- stats::lm(TS~xVals)
     y <- zapsmall(TS - (xVals*fit$coefficients[2] + fit$coefficients[1]),10)
   })
 

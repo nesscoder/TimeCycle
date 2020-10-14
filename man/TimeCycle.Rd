@@ -2,7 +2,7 @@
 % Please edit documentation in R/TimeCycle.R
 \name{TimeCycle}
 \alias{TimeCycle}
-\title{TimeCycle}
+\title{Main TimeCycle Function}
 \usage{
 TimeCycle(
   data,
@@ -16,25 +16,66 @@ TimeCycle(
 )
 }
 \arguments{
-\item{data}{double}
+\item{data}{a \code{data.frame} of numeric gene expression over time (row = genes \emph{x} col = ZT times).}
 
-\item{repLabel}{int}
+\item{repLabel}{a \code{vector} defining the number of replicates at each time points.}
 
-\item{experiments}{int}
+\item{experiments}{a \code{numeric} specifying the number of resampling to use in the null-distribution. Default is \code{10000}.}
 
-\item{minLag}{int}
+\item{minLag}{a \code{numeric} specifying the min lag to check in the 3-D embedding. Default is \code{2}.}
 
-\item{maxLag}{int}
+\item{maxLag}{a \code{numeric} specifying the max lag to check in the 3-D embedding. Default is  \code{5}.}
 
-\item{period}{int}
+\item{period}{a \code{numeric} specifying the period of interest in hours for rhythm detection. Default is \code{24}.}
 
-\item{cores}{int}
+\item{cores}{a \code{numeric} specifying the number of parallel cores to use. Default number of cores is \code{parallel::detectedCores() - 2}.}
 
-\item{laplacian}{boolean}
+\item{laplacian}{a \code{logical} scalar. Should the Laplacian Eigenmaps be used for dimensionality reduction? Default \code{TRUE}.}
 }
 \value{
-
+a tidy \code{data.frame} of processed results for each gene:
+\tabular{lcccccc}{
+ \strong{sampleName} \tab  \strong{perScore} \tab \strong{pVals} \tab \strong{pVals.adj} \tab \strong{Period.in.Hours} \tab \strong{Amp} \tab \strong{Phase.In.Hours} \cr
+ the gene name \tab  the median persistence score across all lags (min to max)  \tab raw empirical \emph{p}-value \tab FDR adjusted \emph{p}-value \tab period (h) \tab amplitude \tab phase (h) \cr
+}
 }
 \description{
-Main Function
+Main function of the \pkg{TimeCycle} package used for detecting rhythmic signals in time-series gene expression sets.
+For additional help with parameter selection, see TimeCycle's vignette:
+\code{vignette("TimeCycle")}.
+}
+\examples{
+# use built in zhang2014 data set sampled every 2 hours for 48 hours (i.e. 24 time points with 1 replicate each).
+# Search for genes with period of 24 hours.
+
+#set seed for reproducibility with random variables in example usage
+# set.seed(1234)
+
+#TimeCycleResults <- TimeCycle(data = zhang2014, repLabel = rep(1,24), period = 24)
+
+# Check number of genes with FDR < 0.05 and period between 22 to 26 hours.
+# library(tidyverse)
+#TimeCycleResults \%>\%
+#    filter(22 < Period.in.Hours & Period.in.Hours < 26) \%>\%
+#    filter(pVals.adj < 0.05) \%>\%
+#    summarize(n())
+
+}
+\references{
+{
+\itemize{
+   \item{Link to TimeCycle Paper!}
+   }
+   \subsection{TDA Package References}{
+   \itemize{
+   \item{Fasy, Brittany & Kim, Jisu & Lecci, Fabrizio & Maria, Clément. (2014). "Introduction to the R package TDA".}
+   \item{Maria C (2014). "GUDHI, Simplicial Complexes and Persistent Homology Packages." \url{ https://project.inria.fr/gudhi/software/ }}
+   \item{Morozov D (2007). "Dionysus, a C++ library for computing persistent homology". \url{ http://www.mrzv.org/software/dionysus/ }}
+   \item{Edelsbrunner H, Harer J (2010). "Computational topology: an introduction." American Mathematical Society.}
+   \item{Fasy B, Lecci F, Rinaldo A, Wasserman L, Balakrishnan S, Singh A (2013). "Statistical Inference For Persistent Homology." (arXiv:1303.7117). Annals of Statistics.}
+   }
+
+
+   }
+}
 }

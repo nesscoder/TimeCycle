@@ -2,16 +2,16 @@
 % Please edit documentation in R/meanCenter.R
 \name{meanCenter}
 \alias{meanCenter}
-\title{mean center the data by Row}
+\title{Mean Centers a \code{data.frame}}
 \usage{
 meanCenter(df)
 }
 \arguments{
-\item{df}{double}
+\item{df}{a \code{data.frame} of \code{numerics}.}
 }
 \value{
-double
+a mean center \code{data.frame} of \code{numerics} by row.
 }
 \description{
-mean center the data by Row
+Mean centers a \code{data.frame} by row.
 }

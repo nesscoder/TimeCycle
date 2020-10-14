@@ -1,11 +1,13 @@
-#' averageReps
+#' Handles Sample Replicates in Single Time-Series
 #'
-#' averages expr values within replicate groups
+#' Averages expression values for a single time-series across replicate groups.
 #'
-#' @param geneExpr double
-#' @param Reps int
+#' @param geneExpr a \code{vector} of \code{numeric} time-series expression values with replicates.
+#' @param Reps a \code{vector} defining the number of replicates at each time point.
 #'
-#' @return double
+#' @return a \code{vector} of average  \code{numeric} time-series expression values by replicate time-points.
+#' @seealso \code{\link{getRepAvgedDataFrame}}
+#'
 #' @export
 #'
 #' @examples

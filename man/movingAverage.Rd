@@ -2,20 +2,23 @@
 % Please edit documentation in R/movingAverage.R
 \name{movingAverage}
 \alias{movingAverage}
-\title{movingAverage}
+\title{Computes the Moving Average of a Single Time-Series}
 \usage{
-movingAverage(x, n = 1, centered = FALSE)
+movingAverage(x, n = 3, centered = TRUE)
 }
 \arguments{
-\item{x}{double the time series}
+\item{x}{a \code{vector} of \code{numeric} time-series expression values.}
 
-\item{n}{int the number of points to use in the moving average}
+\item{n}{a \code{numeric} specifying the number of points to use in the moving average. Default \code{n = 3}.}
 
-\item{centered}{boolean}
+\item{centered}{a \code{logical} scalar. Should the moving average be centered about the current points? Default \code{TRUE} (i.e. average of current point (\code{p}) with  \code{p - n/2} and \code{p + n/2}).}
 }
 \value{
-double
+a \code{vector} containing the smoothed \code{numeric} moving average time-series expression values.
 }
 \description{
-movingAverage
+Computes the moving average about a time-series defined by a specified number of points.
+}
+\seealso{
+\code{\link{movingAverageDF}}
 }

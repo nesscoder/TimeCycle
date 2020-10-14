@@ -2,16 +2,20 @@
 % Please edit documentation in R/detrend.R
 \name{detrend}
 \alias{detrend}
-\title{Detrend}
+\title{Linearly Detrends a \code{data.frame} of Gene Expression Time-Series}
 \usage{
 detrend(data)
 }
 \arguments{
-\item{data}{double dataframe /Rows = Genes, Column = Sample ZT/}
+\item{data}{a \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times).}
 }
 \value{
-double detrended dataframe /Rows = Genes, Column = Sample ZT/
+a detrended \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times).
 }
 \description{
-Detrend Data by fiting a linear model and removing the linear trend
+Detrends a \code{data.frame} of gene expression over time (row = genes \emph{x} col = ZT times)
+by fiting a linear model to each gene and removing the linear trend.
+}
+\seealso{
+\code{\link{periodFinder}}
 }

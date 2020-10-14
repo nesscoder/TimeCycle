@@ -1,12 +1,16 @@
-#' resampleTimeSeries
+#' Generates a \code{data.frame} of Resampled Time-Series
 #'
-#' Takes a dataframe of expr values and generates a resampling of the data used for parametric testing
+#' Converts a \code{data.frame} of \code{numeric} values into a single vector and generates a random resampling with dimension
+#' \code{numRsmps} by \code{numTP}.
 #'
-#' @param distTP double
-#' @param numTP int
-#' @param numRsmps int
+#' @param distTP a \code{data.frame} of \code{numeric} values.
+#' @param numTP a \code{numeric} specifying the number of columns in the outputted \code{data.frame}.
+#' @param numRsmps a \code{numeric} specifying the number of rows in the outputted \code{data.frame}.
 #'
-#' @return int dataframe
+#' @return a \code{data.frame} of randomly sampled \code{numerics} time-series (row = \code{numRsamps} \emph{x} col = \code{numTP}).
+#'
+#' @seealso \code{\link{nullResampling}}
+#'
 #' @export
 #'
 resampleTimeSeries <- function(distTP, numTP, numRsmps) {

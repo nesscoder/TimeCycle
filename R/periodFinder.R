@@ -1,14 +1,23 @@
-#' periodFinder
+#' Estimates the period, amp, and phase of a \code{data.frame} of time-series
 #'
-#' Computes the period, amp, and phase of a dataframe of time series
+#' Estimates the period, amp, and phase of a \code{data.frame} of time-series via fast Fourier transform (FFT).
+#' A model fit for the time-series is generated using the first 3 harmonics. The period, amp, and phase are
+#' computed based on the aggregate fit.
 #'
-#' @param data double dataframe (row = genes, col = timepoints)
-#' @param plotFit boolean
+#' @param data a \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times).
 #'
-#' @return
+#' @return  a \code{data.frame} of \code{numeric} period, amplitude, and phase estimates for each gene.
+#' @seealso
+#' \itemize{
+#'      \item \code{\link{getFFT}} for FFT calculation.
+#'      \item \code{\link{detrend}} for linear detrending of time-series prior to periodFinder processing.
+#'      \item \code{\link{movingAverageDF}} for smoothing of time-series prior to periodFinder processing.
+#'}
+#'
+#'
 #' @export
 #'
-periodFinder <- function(data, plotFit = F){
+periodFinder <- function(data){
 
   colNames <- colnames(data)
 
@@ -19,9 +28,6 @@ periodFinder <- function(data, plotFit = F){
   avgDiff <- mean(diff(xVals))
 
   dataPeriod <- apply(data, 1, function(TS) {
-    #Generate Periodogram of the signal
-
-    periodogram <- TSA::periodogram(as.numeric(TS),log='no',plot=F)
 
     #compute the FFT on the Time series
     fft <- getFFT(TS,1/avgDiff)
@@ -56,16 +62,6 @@ periodFinder <- function(data, plotFit = F){
     minMax <- c(localMax,localMin)
     minMaxOrdered <- minMax[order(minMax)]
     deriv <- diff(fftFullfit)
-    if(plotFit){
-      par(mfrow = c(2,2))
-      plot(fftFullfit)
-      points(minMaxOrdered,fftFullfit[minMaxOrdered], col = "red", pch = 16)
-      plot(deriv)
-      abline(h = 0, col = "red")
-      call <- c(abs(deriv)/max(abs(deriv)) < 0.05)
-      plot(abs(deriv)/max(abs(deriv)), col = call+1, pch = 16)
-      abline(h = 0.05, col = "red")
-    }
 
     #search for outlier points identified as min and maxes
     pos <- c(1,minMaxOrdered)
@@ -74,10 +70,6 @@ periodFinder <- function(data, plotFit = F){
 
     #for each point compute the area under the derivative curve
     areas <- as.vector(unlist(lapply(z,sum)))/sum(abs(deriv)/max(abs(deriv)))
-
-    if(plotFit){
-      plot(areas[2:length(areas)], col = (areas[2:length(areas)] < 0.05)+1)
-    }
 
     #if normalized area is less than 0.05 of total, consider outlier
     outliers <- which(areas[2:length(areas)] < 0.05)
@@ -120,38 +112,6 @@ periodFinder <- function(data, plotFit = F){
       phase <- localMax[1]
     }
     phaseInHours <- (phase*0.1)%%per
-
-    #plot fit to Signal
-    tp <- seq(0,diff(range(xVals)),0.1)
-    if(plotFit){
-      par(mfrow = c(2,2))
-      plot(xVals-min(xVals), TS,"o", xlim = c(0,diff(range(xVals))), pch = 16, main = paste0("Period: ", round(per,2)," | Amp: ", round(amp,2)," | Phase: ", round(phaseInHours,2)))
-      abline(h = 0, col = "grey", lty = 2)
-      for(i in seq(0,max(xVals),per)){
-        abline(v = i, col = "grey", lty = 2)
-      }
-
-      #plot individual harmonics
-      points(tp, fftFullfit, lwd=3, type = "l", lty=1, col="blue")
-      for( i in seq_along(fit)){
-        points(tp, fit[[i]], lwd=2, type = "l", lty=2, col=i)
-      }
-
-      #plot phase and amplitude
-      if(phase != 0){
-        shiftedMax <- tp[phase]
-      }else{
-        shiftedMax <- phase
-      }
-      segments(x0 = 0, y0 = amp, x1 = phaseInHours, y1 = amp, col = "orange", lwd = 3)
-      segments(x0 = shiftedMax, y0 = 0, x1 = shiftedMax, y1 = amp, col = "green", lwd = 3)
-      axis(side = 1,at = seq(0,max(xVals),5), labels = seq(0,max(xVals),5))
-
-      #Plot Periodgram information
-      plot(periodogram$freq,periodogram$spec, "o", main = "Periodigram", xlab = "freq", ylab = "Spectrum Intensity")
-      plot(fft$freq,Mod(fft$fur), "o", main = "Amp Spec", xlab = "freq", ylab = "Amp")
-      plot(fft$freq,Arg(fft$fur), "o", main = "Phase Spec", xlab = "freq", ylab = "Phase" )
-    }
 
     return(round(c(per, amp, phaseInHours),2))
   })
