@@ -54,6 +54,7 @@ getPersistence <- function(timeSeries, lag, laplacian = T) {
     }
   )
 
+
   if (is.null(embedding)) {
     # print("Insufficient observations for the requested embedding, setting Persistence Score to 0")
     return(0)

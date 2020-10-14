@@ -2,16 +2,19 @@
 % Please edit documentation in R/scaleTimeSeries.R
 \name{scaleTimeSeries}
 \alias{scaleTimeSeries}
-\title{scale Time Series}
+\title{Scales a Time-Series}
 \usage{
 scaleTimeSeries(TimeSeries)
 }
 \arguments{
-\item{TimeSeries}{double}
+\item{TimeSeries}{a \code{vector} of \code{numeric} time-series expression values.}
 }
 \value{
-double
+a scaled \code{vector} of \code{numeric} time-series expression values between 0  and 1.
 }
 \description{
-scales Time Series values to be between 0 and 1
+Scales a time-series between 0 and 1.
+}
+\seealso{
+\code{\link{preprocess_acf}}, \code{\link{meanCenter}}
 }

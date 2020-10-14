@@ -13,7 +13,7 @@ imputeMissingData(data)
 a imputed \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times).
 }
 \description{
-Imputes NA in \code{data.frame} by computing the linear path between missing points
+Imputes \code{numeric} values for time-points with an \code{NA} by computing the linear path between missing points
 }
 \examples{
 a <- c(10, 12, 14, NA, 18)

@@ -1,6 +1,6 @@
 #' Imputates Missing Time-Points in Data
 #'
-#' Imputes NA in \code{data.frame} by computing the linear path between missing points
+#' Imputes \code{numeric} values for time-points with an \code{NA} by computing the linear path between missing points
 #'
 #' @param data a \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times) with missing values.
 #'

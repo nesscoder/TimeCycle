@@ -35,3 +35,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/nesscoder/TimeCycle
+BugReports: https://github.com/nesscoder/TimeCycle/issues

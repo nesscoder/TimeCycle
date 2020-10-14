@@ -15,3 +15,6 @@ a mean center \code{data.frame} of \code{numerics} by row.
 \description{
 Mean centers a \code{data.frame} by row.
 }
+\seealso{
+\code{\link{preprocess_acf}}, \code{\link{scaleTimeSeries}}
+}

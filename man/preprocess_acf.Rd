@@ -2,20 +2,23 @@
 % Please edit documentation in R/preprocess_acf.R
 \name{preprocess_acf}
 \alias{preprocess_acf}
-\title{Preprocessing AutoCorrelation Function}
+\title{Computes Time-Series Autocovariance Function}
 \usage{
 preprocess_acf(data, period = 24)
 }
 \arguments{
-\item{data}{dataframe of time series}
+\item{data}{a \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times).}
 
-\item{period}{the period of interest in your data (i.e. default = 24)}
+\item{period}{a \code{numeric} specifying the period of interest in hours for rhythm detection. Default is \code{24}.}
 }
 \value{
-
+a smoothed \code{data.frame} of \code{numeric} gene expression covariance over time (row = genes \emph{x} col = ZT times).
 }
 \description{
-Take a dataframe of time-series as input and smooth oscillations by computing the autocorrelation function
-and taking the moving average across time points according the defined period and sampling scheme.
-Returns the smoothed time-series as a dataframe.
+Computing the autocovariance function from a \code{data.frame} of time-series. The resulting autocovariance
+function is smoothed using a moving average defined by the period and sampling scheme.
+Returns the smoothed time-series as a \code{data.frame}.
+}
+\seealso{
+\code{\link{meanCenter}}, \code{\link{scaleTimeSeries}}
 }

@@ -1,10 +1,13 @@
-#' scale Time Series
+#' Scales a Time-Series
 #'
-#' scales Time Series values to be between 0 and 1
+#' Scales a time-series between 0 and 1.
 #'
-#' @param TimeSeries double
+#' @param TimeSeries a \code{vector} of \code{numeric} time-series expression values.
 #'
-#' @return double
+#' @return a scaled \code{vector} of \code{numeric} time-series expression values between 0  and 1.
+#'
+#' @seealso \code{\link{preprocess_acf}}, \code{\link{meanCenter}}
+#'
 #' @export
 #'
 scaleTimeSeries <- function(TimeSeries){

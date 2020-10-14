@@ -12,14 +12,15 @@
 #'
 #'
 buildTakens_ndim <- function(x, dim, delay = 1) {
-  n <- length(x) - (dim - 1) * delay
+  n <- length(x) - (dim-1)*delay
   X <- seq_along(x)
-  if (n <= 0) {
+  if(n <= 0)
     stop("Insufficient observations for the requested embedding")
-  }
   out <- matrix(rep(X[seq_len(n)], dim), ncol = dim)
-  out[, -1] <- out[, -1, drop = FALSE] +
+  out[,-1] <- out[,-1, drop = FALSE] +
     rep(seq_len(dim - 1) * delay, each = nrow(out))
+
+  out <- matrix(x[out], ncol = dim)
 
   return(out)
 }

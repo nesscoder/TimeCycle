@@ -18,17 +18,16 @@ suppressMessages(library(tidyverse))
 ```
 
 <!-- badges: start -->
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![CRAN Status](https://www.r-pkg.org/badges/version/TimeCycle)](https://cran.r-project.org/package=TimeCycle)
-[![R build status](https://github.com/r-lib/pkgdown/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/pkgdown/actions)
-[![R build status](https://github.com/nesscoder/TimeCycle/workflows/R-CMD-check/badge.svg)](https://github.com/nesscoder/TimeCycle/actions)
+
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) [![CRAN Status](https://www.r-pkg.org/badges/version/TimeCycle)](https://cran.r-project.org/package=TimeCycle) [![R build status](https://github.com/nesscoder/TimeCycle/workflows/R-CMD-check/badge.svg)](https://github.com/nesscoder/TimeCycle/actions)
+
 <!-- badges: end -->
 
-> TimeCycle is designed to ...
+> TimeCycle is designed to detect rhythmic genes in circadian transcriptomic time-series data. Based on [topological data analysis](articles/TimeCycle.html#takens-theorem-1), TimeCycle provides a reliable and efficent reference-free framework for cycle detection --- handling custom sampling schemes, replicates, and missing data. To learn more about the [theory](articles/TimeCycle.html#theory-1) and [usage](articles/TimeCycle.html#usage-1) of TimeCycle, see `vignette("TimeCycle")` or checkout the [accompanying paper](www.website.com)
 
 ## Installation
 
-```r
+``` r
 # Install release version from CRAN
 install.packages("TimeCycle")
 
@@ -38,7 +37,13 @@ devtools::install_github("nesscoder/TimeCycle")
 
 ## Usage
 
-This is a basic example which shows you how to solve a common problem: See Reference\>zhang2014 For additional info on dataset. Set the replicate labels.
+Circadian cycling detection can easily be achieved using TimeCycle's main function.
+Get started with `TimeCycle()` by defining the data and replicate labels.
+
+In this example, we will use the `zhang2014()` gene expression set consists of mouse livers sampled every 2-h for 48-h with a single replicate (i.e. 24 time points). TimeCycle assumes a default circadian period of 24-h. 
+
+-   See `zhang2014()` for additional information about the example data set.
+-   See [replicate labels](articles/TimeCycle.html#replicate-labels) for additional information regarding `repLabel`.
 
 ```{r, echo=F, include = FALSE}
 suppressMessages(TimeCycle(data = zhang2014[1:3,], repLabel = rep(1,24), period = 24, experiments = 10))
@@ -50,10 +55,10 @@ library(TimeCycle)
 #set seed for reproducibility with random variables in example usage
 set.seed(1234) 
 
-TimeCycleResults <- TimeCycle(data = zhang2014, repLabel = rep(1,24), period = 24)
+TimeCycleResults <- TimeCycle(data = zhang2014, repLabel = rep(1,24))
 ```
 
-Check the output and filter for the genes of interest. In this case we are looking for genes with a period of oscillation between 22 and 26 hours and an FDR $< 0.05$.
+Once TimeCycle has finished processing, simply check the output and filter for the genes of interest. In this example, we filter for genes with a **period of oscillation between 22 and 26** hours and an **FDR < 0.05**.
 
 ```{r}
 library(tidyverse)
@@ -61,7 +66,7 @@ library(tidyverse)
 TimeCycleResults %>%
   filter(22 < Period.in.Hours & Period.in.Hours < 26) %>%
   filter(pVals.adj < 0.05) %>%
-  summarize(n())
+  glimpse()
 ```
 
- Read `vignette("TimeCycle")` for more details and to learn how to customise parameters for your time-series data set.
+See `vignette("TimeCycle")` for a detailed description of algorithm design and suggestions for custom parameter selection.

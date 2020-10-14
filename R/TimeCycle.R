@@ -52,7 +52,7 @@
 #' #TimeCycleResults %>%
 #'#    filter(22 < Period.in.Hours & Period.in.Hours < 26) %>%
 #'#    filter(pVals.adj < 0.05) %>%
-#'#    summarize(n())
+#'#    glimpse()
 #'
 #'@export
 TimeCycle <- function(data,
@@ -103,8 +103,8 @@ TimeCycle <- function(data,
   #allow us to compare all genes at once to the null distribution rather than just one at a time
   dataScaled  <- as.data.frame(t(apply(centeredData, 1, scaleTimeSeries)))
   colnames(dataScaled) <- colnames(centeredData)
-  #Smooth -> Mean Center
-  dataScaled  <- dataScaled #store as global variable to be accessed by the user
+
+  #Smooth data with Autocorrelation
   preProcessedData <- preprocess_acf(dataScaled, period)
 
   ##----------------------- pre-process NUll Distribution Data -----------------------

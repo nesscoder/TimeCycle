@@ -5,6 +5,9 @@
 #' @param  df a \code{data.frame} of \code{numerics}.
 #'
 #' @return a mean center \code{data.frame} of \code{numerics} by row.
+#'
+#' @seealso \code{\link{preprocess_acf}}, \code{\link{scaleTimeSeries}}
+#'
 #' @export
 #'
 meanCenter <- function(df){

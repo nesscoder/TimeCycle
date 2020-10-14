@@ -58,7 +58,7 @@ For additional help with parameter selection, see TimeCycle's vignette:
 #TimeCycleResults \%>\%
 #    filter(22 < Period.in.Hours & Period.in.Hours < 26) \%>\%
 #    filter(pVals.adj < 0.05) \%>\%
-#    summarize(n())
+#    glimpse()
 
 }
 \references{
