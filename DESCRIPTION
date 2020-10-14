@@ -29,7 +29,6 @@ Imports:
     parallel,
     TDA,
     imputeTS,
-    signal,
     stats
 Suggests: 
     knitr,
