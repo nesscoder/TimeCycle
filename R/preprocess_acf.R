@@ -6,6 +6,7 @@
 #'
 #' @param data a \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times).
 #' @param period a \code{numeric} specifying the period of interest in hours for rhythm detection. Default is \code{24}.
+#' @param linearTrend  a \code{logical} scalar. Should TimeCycle Prioritize detecting linear trending signals? Default \code{FALSE}. Not recommended to change from default \code{FALSE} - will increases false positives rate. See vignette("TimeCycle") for more details.
 #'
 #' @return a smoothed \code{data.frame} of \code{numeric} gene expression covariance over time (row = genes \emph{x} col = ZT times).
 #'
@@ -14,7 +15,7 @@
 #' @export
 #'
 #'
-preprocess_acf <- function(data, period = 24){
+preprocess_acf <- function(data, period = 24, linearTrend = F){
   data <- as.data.frame(data)
   xVals <- as.numeric(colnames(data))
   len <- max(xVals)
@@ -26,8 +27,13 @@ preprocess_acf <- function(data, period = 24){
     corr <- as.vector(corr$acf)
     corr <- scale(corr)
 
-    #toCheck <- diff(as.vector(movingAverage(corr, n = length(ts)/4, centered =  T))) # better for Linear Trends, increases Sigmoid false positive
-    toCheck <- as.vector(movingAverage(corr, n = period/ceiling(len/period)/interval+1, centered =  T))
+    if(linearTrend){
+      # better for Linear Trends, increases Sigmoid false positive
+      toCheck <- diff(as.vector(movingAverage(corr, n = period/ceiling(len/period)/interval+1, centered =  T)))
+    } else{
+      toCheck <- as.vector(movingAverage(corr, n = period/ceiling(len/period)/interval+1, centered =  T))
+    }
+
   })
 
   output <- as.data.frame(t(output))

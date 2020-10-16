@@ -7,12 +7,13 @@
 TimeCycle(
   data,
   repLabel,
-  experiments = 10000,
+  resamplings = 10000,
   minLag = 2,
   maxLag = 5,
   period = 24,
   cores = parallel::detectCores() - 2,
-  laplacian = T
+  laplacian = T,
+  linearTrend = F
 )
 }
 \arguments{
@@ -20,7 +21,7 @@ TimeCycle(
 
 \item{repLabel}{a \code{vector} defining the number of replicates at each time points.}
 
-\item{experiments}{a \code{numeric} specifying the number of resampling to use in the null-distribution. Default is \code{10000}.}
+\item{resamplings}{a \code{numeric} specifying the number of resamplings to use in the null-distribution. Default is \code{10000}.}
 
 \item{minLag}{a \code{numeric} specifying the min lag to check in the 3-D embedding. Default is \code{2}.}
 
@@ -30,7 +31,9 @@ TimeCycle(
 
 \item{cores}{a \code{numeric} specifying the number of parallel cores to use. Default number of cores is \code{parallel::detectedCores() - 2}.}
 
-\item{laplacian}{a \code{logical} scalar. Should the Laplacian Eigenmaps be used for dimensionality reduction? Default \code{TRUE}.}
+\item{laplacian}{a \code{logical} scalar. Should the Laplacian Eigenmaps be used for dimensionality reduction? Default \code{TRUE}}
+
+\item{linearTrend}{a \code{logical} scalar. Should TimeCycle Prioritize detecting linear trending signals? Default \code{FALSE}. Not recommended to change from default \code{FALSE} - will increases false positives rate. See vignette("TimeCycle") for more details.}
 }
 \value{
 a tidy \code{data.frame} of processed results for each gene:
@@ -45,13 +48,18 @@ For additional help with parameter selection, see TimeCycle's vignette:
 \code{vignette("TimeCycle")}.
 }
 \examples{
-# use built in zhang2014 data set sampled every 2 hours for 48 hours (i.e. 24 time points with 1 replicate each).
+# use built in zhang2014 data set sampled every
+# 2 hours for 48 hours (i.e. 24 time points with 1 replicate each).
 # Search for genes with period of 24 hours.
 
 #set seed for reproducibility with random variables in example usage
 set.seed(1234)
 
-TimeCycleResults <- TimeCycle(data = zhang2014[1:100,], repLabel = rep(1,24), period = 24,  experiments = 100)
+TimeCycleResults <- TimeCycle(data = zhang2014[1:100,],
+                              repLabel = rep(1,24),
+                              period = 24,
+                              cores = 2,
+                              resamplings = 10)
 
 # Check number of genes with FDR < 0.05 and period between 22 to 26 hours.
 library(tidyverse)

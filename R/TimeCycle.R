@@ -6,12 +6,13 @@
 #'
 #' @param data a \code{data.frame} of numeric gene expression over time (row = genes \emph{x} col = ZT times).
 #' @param repLabel a \code{vector} defining the number of replicates at each time points.
-#' @param experiments a \code{numeric} specifying the number of resampling to use in the null-distribution. Default is \code{10000}.
+#' @param resamplings a \code{numeric} specifying the number of resamplings to use in the null-distribution. Default is \code{10000}.
 #' @param minLag a \code{numeric} specifying the min lag to check in the 3-D embedding. Default is \code{2}.
 #' @param maxLag a \code{numeric} specifying the max lag to check in the 3-D embedding. Default is  \code{5}.
 #' @param cores a \code{numeric} specifying the number of parallel cores to use. Default number of cores is \code{parallel::detectedCores() - 2}.
 #' @param period a \code{numeric} specifying the period of interest in hours for rhythm detection. Default is \code{24}.
-#' @param laplacian  a \code{logical} scalar. Should the Laplacian Eigenmaps be used for dimensionality reduction? Default \code{TRUE}.
+#' @param laplacian  a \code{logical} scalar. Should the Laplacian Eigenmaps be used for dimensionality reduction? Default \code{TRUE}
+#' @param linearTrend  a \code{logical} scalar. Should TimeCycle Prioritize detecting linear trending signals? Default \code{FALSE}. Not recommended to change from default \code{FALSE} - will increases false positives rate. See vignette("TimeCycle") for more details.
 #'
 #' @references{
 #' \itemize{
@@ -39,15 +40,21 @@
 #' }
 #'
 #' @examples
-#' # use built in zhang2014 data set sampled every 2 hours for 48 hours (i.e. 24 time points with 1 replicate each).
+#' # use built in zhang2014 data set sampled every
+#' # 2 hours for 48 hours (i.e. 24 time points with 1 replicate each).
 #' # Search for genes with period of 24 hours.
 #'
 #' #set seed for reproducibility with random variables in example usage
 #' set.seed(1234)
 #'
-#' TimeCycleResults <- TimeCycle(data = zhang2014[1:100,], repLabel = rep(1,24), period = 24,  experiments = 100)
+#' TimeCycleResults <- TimeCycle(data = zhang2014[1:100,],
+#'                               repLabel = rep(1,24),
+#'                               period = 24,
+#'                               cores = 2,
+#'                               resamplings = 10)
 #'
 #' # Check number of genes with FDR < 0.05 and period between 22 to 26 hours.
+#' library(tidyverse)
 #'
 #' TimeCycleResults %>%
 #'    filter(22 < Period.in.Hours & Period.in.Hours < 26) %>%
@@ -57,12 +64,13 @@
 #'@export
 TimeCycle <- function(data,
                       repLabel,
-                      experiments = 10000,
+                      resamplings = 10000,
                       minLag = 2,
                       maxLag = 5,
                       period = 24,
                       cores = parallel::detectCores()-2,
-                      laplacian = T
+                      laplacian = T,
+                      linearTrend = F
 ){
 
   ## -----------------------------------pre-process Data ----------------------------
@@ -84,7 +92,7 @@ TimeCycle <- function(data,
   print("Pre-Processing Data")
 
   #reorder the Data By Replicate
-  dataAvg <<- getRepAvgedDataFrame(data = data, repLabel = repLabel)
+  dataAvg <- getRepAvgedDataFrame(data = data, repLabel = repLabel)
 
   #impute Missing Values
   dataAvg <- imputeMissingData(dataAvg)
@@ -105,16 +113,16 @@ TimeCycle <- function(data,
   colnames(dataScaled) <- colnames(centeredData)
 
   #Smooth data with Autocorrelation
-  preProcessedData <- preprocess_acf(dataScaled, period)
+  preProcessedData <- preprocess_acf(dataScaled, period, linearTrend = linearTrend)
 
   ##----------------------- pre-process NUll Distribution Data -----------------------
   print("Pre-Processing Null Distribution")
 
   #create the Null resampling of the Data
-  resampledDataForNull <- nullResampling(dataScaled, numExperiments = experiments)
+  resampledDataForNull <- nullResampling(dataScaled, numExperiments = resamplings)
 
   #Smooth -> Mean Center
-  resampledprocessedData <- preprocess_acf(resampledDataForNull, period)
+  resampledprocessedData <- preprocess_acf(resampledDataForNull, period, linearTrend = linearTrend)
 
   ##------------------------ Compute the NUll Distribution  ------------------------
   print("Computing Null Distribution")
@@ -140,7 +148,7 @@ TimeCycle <- function(data,
   })
 
   #get FDR Adjusted pVal
-  pVals <- unlist(pVals)/as.numeric(experiments)
+  pVals <- unlist(pVals)/as.numeric(resamplings)
   pVals.adj <- stats::p.adjust(pVals,method = 'fdr')
   names(pVals.adj) <- sampleNames
 

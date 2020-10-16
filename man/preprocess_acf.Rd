@@ -4,12 +4,14 @@
 \alias{preprocess_acf}
 \title{Computes Time-Series Autocovariance Function}
 \usage{
-preprocess_acf(data, period = 24)
+preprocess_acf(data, period = 24, linearTrend = F)
 }
 \arguments{
 \item{data}{a \code{data.frame} of \code{numeric} gene expression over time (row = genes \emph{x} col = ZT times).}
 
 \item{period}{a \code{numeric} specifying the period of interest in hours for rhythm detection. Default is \code{24}.}
+
+\item{linearTrend}{a \code{logical} scalar. Should TimeCycle Prioritize detecting linear trending signals? Default \code{FALSE}. Not recommended to change from default \code{FALSE} - will increases false positives rate. See vignette("TimeCycle") for more details.}
 }
 \value{
 a smoothed \code{data.frame} of \code{numeric} gene expression covariance over time (row = genes \emph{x} col = ZT times).
