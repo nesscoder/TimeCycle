@@ -48,3 +48,6 @@ reference:
   - resampleTimeSeries
   - scaleTimeSeries
 
+news:
+  releases:
+  - text: "Version 1.0.0"

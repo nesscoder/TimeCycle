@@ -20,13 +20,13 @@ h5 {
 }
 </style>
 ```
-<img src="./../man/figures/logo.png" width = "175" align="right"/>
+<img src="./../man/figures/logo.png" width="175" align="right"/>
 
-> The following vignette describes the theory and usage of TimeCycle. 
+> The following vignette describes the theory and usage of TimeCycle.
 
-* For a comprehensive analysis and discussion of TimeCycle's performance in detecting rhythmic genes, see the accompanying [paper](INSERT%20PAPER%20LINK). 
+-   For a comprehensive analysis and discussion of TimeCycle's performance in detecting rhythmic genes, see the accompanying [paper](INSERT%20PAPER%20LINK).
 
-* For details pertaining to the data and source code used in the analysis, see the [`nesscoder/TimeCycle-data`](https://github.com/nesscoder/TimeCycle-data) git repository.
+-   For details pertaining to the data and source code used in the analysis, see the [`nesscoder/TimeCycle-data`](https://github.com/nesscoder/TimeCycle-data) git repository.
 
 ------------------------------------------------------------------------
 
@@ -214,11 +214,11 @@ A properly formatted `data.frame` should look as follows:
 |               |           |           |       |            |            |
 |--------------:|:---------:|:---------:|:-----:|:----------:|:----------:|
 |               | **ZT\_0** | **ZT\_2** |  ...  | **ZT\_46** | **ZT\_48** |
-|    **gene\_1**|    120    |     1     |  ...  |      1     |      1     |
-|    **gene\_2**|    120    |     1     |  ...  |      1     |      1     |
+|    **gene\_1**|    1.0    |    3.0    |  ...  |     7.0    |     4.0    |
+|    **gene\_2**|    4.0    |    8.0    |  ...  |     2.0    |     1.0    |
 |          **⋮**|   **⋮**   |   **⋮**   | **⋱** |    **⋮**   |    **⋮**   |
-|  **gene\_n-1**|    120    |     1     |  ...  |      1     |      1     |
-|    **gene\_n**|    120    |     1     |  ...  |      1     |      1     |
+|  **gene\_n-1**|    5.0    |    8.0    |  ...  |     3.0    |     2.0    |
+|    **gene\_n**|    9.0    |    4.0    |  ...  |     7.0    |     3.0    |
 
 ------------------------------------------------------------------------
 
@@ -233,11 +233,11 @@ A properly formatted `data.frame` with even replicates across all time-points sh
 |               |           |           |                 |                 |       |            |            |                  |                  |
 |--------------:|:---------:|:---------:|:---------------:|:---------------:|:-----:|:----------:|:----------:|:----------------:|:----------------:|
 |               | ZT\_0\_R1 | ZT\_0\_R2 | ***ZT\_2\_R1*** | ***ZT\_2\_R2*** |  ...  | ZT\_46\_R1 | ZT\_46\_R2 | ***ZT\_48\_R1*** | ***ZT\_48\_R2*** |
-|    **gene\_1**|    120    |     1     |     ***1***     |     ***1***     |  ...  |      1     |      1     |      ***1***     |      ***1***     |
-|    **gene\_2**|    120    |     1     |     ***1***     |     ***1***     |  ...  |      1     |      1     |      ***1***     |      ***1***     |
+|    **gene\_1**|    1.0    |     2     |    ***3.0***    |    ***2.0***    |  ...  |     7.0    |     9.0    |     ***4.0***    |     ***5.0***    |
+|    **gene\_2**|    4.0    |     3     |    ***8.0***    |    ***9.0***    |  ...  |     2.0    |     1.0    |     ***1.0***    |     ***3.0***    |
 |          **⋮**|   **⋮**   |   **⋮**   |     ***⋮***     |     ***⋮***     | **⋱** |    **⋮**   |    **⋮**   |      ***⋮***     |      ***⋮***     |
-|  **gene\_n-1**|    120    |     1     |     ***1***     |     ***1***     |  ...  |      1     |      1     |      ***1***     |      ***1***     |
-|    **gene\_n**|    120    |     1     |     ***1***     |     ***1***     |  ...  |      1     |      1     |      ***1***     |      ***1***     |
+|  **gene\_n-1**|    5.0    |     6     |    ***8.0***    |    ***7.0***    |  ...  |     3.0    |     4.0    |     ***2.0***    |     ***1.0***    |
+|    **gene\_n**|    9.0    |    8.0    |    ***4.0***    |    ***5.0***    |  ...  |     7.0    |     8.0    |     ***3.0***    |     ***2.0***    |
 
 **Example Replicate Labels**
 
@@ -264,11 +264,11 @@ A properly formatted `data.frame` with uneven replicates across all time-points 
 |               |           |           |           |                 |       |            |            |                  |                  |
 |--------------:|:---------:|:---------:|:---------:|:---------------:|:-----:|:----------:|:----------:|:----------------:|:----------------:|
 |               | ZT\_0\_R1 | ZT\_0\_R2 | ZT\_0\_R3 | ***ZT\_2\_R1*** |  ...  | ZT\_46\_R1 | ZT\_46\_R2 | ***ZT\_48\_R1*** | ***ZT\_48\_R2*** |
-|    **gene\_1**|    120    |     1     |     1     |     ***1***     |  ...  |      1     |      1     |      ***1***     |      ***1***     |
-|    **gene\_2**|    120    |     1     |     1     |     ***1***     |  ...  |      1     |      1     |      ***1***     |      ***1***     |
+|    **gene\_1**|    1.0    |    2.0    |    1.0    |    ***3.0***    |  ...  |     7.0    |     9.0    |     ***4.0***    |     ***5.0***    |
+|    **gene\_2**|    4.0    |    3.0    |    5.0    |    ***8.0***    |  ...  |     1.0    |     1.0    |     ***1.0***    |     ***3.0***    |
 |          **⋮**|   **⋮**   |   **⋮**   |   **⋮**   |     ***⋮***     | **⋱** |    **⋮**   |    **⋮**   |      ***⋮***     |      ***⋮***     |
-|  **gene\_n-1**|    120    |     1     |     1     |     ***1***     |  ...  |      1     |      1     |      ***1***     |      ***1***     |
-|    **gene\_n**|    120    |     1     |     1     |     ***1***     |  ...  |      1     |      1     |      ***1***     |      ***1***     |
+|  **gene\_n-1**|    5.0    |    6.0    |    4.0    |    ***8.0***    |  ...  |     3.0    |     4.0    |     ***2.0***    |     ***1.0***    |
+|    **gene\_n**|    9.0    |    8.0    |    9.0    |    ***4.0***    |  ...  |     7.0    |     8.0    |     ***3.0***    |     ***2.0***    |
 
 **Example Replicate Labels**
 
@@ -297,11 +297,11 @@ A properly formatted `data.frame` with missing values should look as follows:
 
 |               | **ZT\_0** | **ZT\_2** |  ...  | **ZT\_46** | **ZT\_48** |
 |--------------:|:---------:|:---------:|:-----:|:----------:|:----------:|
-|    **gene\_1**|    120    |    `NA`   |  ...  |      1     |      1     |
-|    **gene\_2**|    120    |     1     |  ...  |    `NA`    |      1     |
+|    **gene\_1**|    1.0    |    `NA`   |  ...  |     7.0    |     4.0    |
+|    **gene\_2**|    4.0    |    8.0    |  ...  |    `NA`    |     1.0    |
 |          **⋮**|   **⋮**   |   **⋮**   | **⋱** |    **⋮**   |    **⋮**   |
-|  **gene\_n-1**|    120    |     1     |  ...  |    `NA`    |      1     |
-|    **gene\_n**|    `NA`   |     1     |  ...  |      1     |      1     |
+|  **gene\_n-1**|    5.0    |    8.0    |  ...  |    `NA`    |     2.0    |
+|    **gene\_n**|    `NA`   |    4.0    |  ...  |     7.0    |     3.0    |
 
 ------------------------------------------------------------------------
 
