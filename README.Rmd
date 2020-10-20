@@ -2,7 +2,7 @@
 output: github_document
 ---
 
-# TimeCycle <img src="man/figures/logo.png" align="right"/>
+# TimeCycle
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -23,7 +23,15 @@ suppressMessages(library(tidyverse))
 
 <!-- badges: end -->
 
-> TimeCycle is designed to detect rhythmic genes in circadian transcriptomic time-series data. Based on [topological data analysis](articles/TimeCycle.html#takens-theorem-1), TimeCycle provides a reliable and efficent reference-free framework for cycle detection --- handling custom sampling schemes, replicates, and missing data. To learn more about the [theory](articles/TimeCycle.html#theory-1) and [usage](articles/TimeCycle.html#usage-1) of TimeCycle, see `vignette("TimeCycle")` or checkout the [accompanying paper](www.website.com)
+<img src="man/figures/logo.png" width="200" align="right"/>
+
+> TimeCycle is designed to detect rhythmic genes in circadian transcriptomic time-series data. Based on [topological data analysis](articles/TimeCycle.html#takens-theorem-1), TimeCycle provides a reliable and efficent reference-free framework for cycle detection --- handling custom sampling schemes, replicates, and missing data.
+
+-   To learn more about the [theory](articles/TimeCycle.html#theory-1) and [usage](articles/TimeCycle.html#usage-1) of TimeCycle, see `vignette("TimeCycle")`.
+-   For a comprehensive analysis and discussion of TimeCycle's performance in detecting rhythmic genes, see the accompanying [paper](INSERT%20PAPER%20LINK).
+-   For details pertaining to the data and source code used in the analysis, see the [`nesscoder/TimeCycle-data`](https://github.com/nesscoder/TimeCycle-data) git repository.
+
+***
 
 ## Installation
 
@@ -35,12 +43,13 @@ install.packages("TimeCycle")
 devtools::install_github("nesscoder/TimeCycle")
 ```
 
+***
+
 ## Usage
 
-Circadian cycling detection can easily be achieved using TimeCycle's main function.
-Get started with `TimeCycle()` by defining the data and replicate labels.
+Circadian cycling detection can easily be achieved using TimeCycle's main function. Get started with `TimeCycle()` by defining the data and replicate labels.
 
-In this example, we will use the `zhang2014()` gene expression set consists of mouse livers sampled every 2-h for 48-h with a single replicate (i.e. 24 time points). TimeCycle assumes a default circadian period of 24-h. 
+In this example, we will use the `zhang2014()` gene expression set consists of mouse livers sampled every 2-h for 48-h with a single replicate (i.e. 24 time points). TimeCycle assumes a default circadian period of 24-h.
 
 -   See `zhang2014()` for additional information about the example data set.
 -   See [replicate labels](articles/TimeCycle.html#replicate-labels) for additional information regarding `repLabel`.
@@ -58,7 +67,7 @@ set.seed(1234)
 TimeCycleResults <- TimeCycle(data = zhang2014, repLabel = rep(1,24))
 ```
 
-Once TimeCycle has finished processing, simply check the output and filter for the genes of interest. In this example, we filter for genes with a **period of oscillation between 22 and 26** hours and an **FDR < 0.05**.
+Once TimeCycle has finished processing, simply check the output and filter for the genes of interest. In this example, we filter for genes with a **period of oscillation between 22 and 26** hours and an **FDR \< 0.05**.
 
 ```{r}
 library(tidyverse)

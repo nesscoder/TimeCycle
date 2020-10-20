@@ -14,7 +14,7 @@ home:
   - text: Checkout TimeCycle's publication
     href: "http://website.com"
   - text: Browse TimeCycle's publication source code
-    href: "http://website.com"
+    href: "https://github.com/nesscoder/TimeCycle-data"
 
 development:
   mode: auto

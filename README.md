@@ -1,6 +1,6 @@
 
-TimeCycle <img src="man/figures/logo.png" align="right"/>
-=========================================================
+TimeCycle
+=========
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -14,16 +14,27 @@ status](https://github.com/nesscoder/TimeCycle/workflows/R-CMD-check/badge.svg)]
 
 <!-- badges: end -->
 
+<img src="man/figures/logo.png" width="200" align="right"/>
+
 > TimeCycle is designed to detect rhythmic genes in circadian
 > transcriptomic time-series data. Based on [topological data
 > analysis](articles/TimeCycle.html#takens-theorem-1), TimeCycle
 > provides a reliable and efficent reference-free framework for cycle
 > detection — handling custom sampling schemes, replicates, and missing
-> data. To learn more about the
-> [theory](articles/TimeCycle.html#theory-1) and
-> [usage](articles/TimeCycle.html#usage-1) of TimeCycle, see
-> `vignette("TimeCycle")` or checkout the [accompanying
-> paper](www.website.com)
+> data.
+
+-   To learn more about the [theory](articles/TimeCycle.html#theory-1)
+    and [usage](articles/TimeCycle.html#usage-1) of TimeCycle, see
+    `vignette("TimeCycle")`.
+-   For a comprehensive analysis and discussion of TimeCycle’s
+    performance in detecting rhythmic genes, see the accompanying
+    [paper](INSERT%20PAPER%20LINK).
+-   For details pertaining to the data and source code used in the
+    analysis, see the
+    [`nesscoder/TimeCycle-data`](https://github.com/nesscoder/TimeCycle-data)
+    git repository.
+
+------------------------------------------------------------------------
 
 Installation
 ------------
@@ -33,6 +44,8 @@ Installation
 
     # Install development version from GitHub
     devtools::install_github("nesscoder/TimeCycle")
+
+------------------------------------------------------------------------
 
 Usage
 -----
@@ -75,7 +88,7 @@ period of 24-h.
     #> [1] "Computing Persistence Scores"
     #> [1] "Calculating p-values"
     #> [1] "TimeCycle Completed"
-    #> [1] "Analysis Time: 00:00:55"
+    #> [1] "Analysis Time: 00:00:56"
 
 Once TimeCycle has finished processing, simply check the output and
 filter for the genes of interest. In this example, we filter for genes
