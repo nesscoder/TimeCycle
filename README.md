@@ -5,14 +5,19 @@ TimeCycle
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
 
-[![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![CRAN
-Status](https://www.r-pkg.org/badges/version/TimeCycle)](https://cran.r-project.org/package=TimeCycle)
 [![R build
 status](https://github.com/nesscoder/TimeCycle/workflows/R-CMD-check/badge.svg)](https://github.com/nesscoder/TimeCycle/actions)
+[![Lifecycle:
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![](https://img.shields.io/badge/devel%20version-0.0.0.9000-blue.svg)](https://github.com/nesscoder/TimeCycle)
+[![](https://img.shields.io/github/languages/code-size/nesscoder/TimeCycle.svg)](https://github.com/nesscoder/TimeCycle)
 
 <!-- badges: end -->
+<!--
+[![BioC status](http://www.bioconductor.org/shields/build/release/bioc/TimeCycle.svg)](https://bioconductor.org/checkResults/release/bioc-LATEST/TimeCycle)
+Add Doi when published
+badge_doi("10.1111/2041-210X.12628", "yellow")
+-->
 
 <img src="man/figures/logo.png" width="200" align="right"/>
 

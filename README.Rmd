@@ -15,13 +15,23 @@ knitr::opts_chunk$set(
 )
 library(TimeCycle)
 suppressMessages(library(tidyverse))
+library(badger)
 ```
 
 <!-- badges: start -->
 
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) [![CRAN Status](https://www.r-pkg.org/badges/version/TimeCycle)](https://cran.r-project.org/package=TimeCycle) [![R build status](https://github.com/nesscoder/TimeCycle/workflows/R-CMD-check/badge.svg)](https://github.com/nesscoder/TimeCycle/actions)
+[![R build status](https://github.com/nesscoder/TimeCycle/workflows/R-CMD-check/badge.svg)](https://github.com/nesscoder/TimeCycle/actions)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) 
+`r badge_devel("nesscoder/TimeCycle", "blue")`
+`r badge_code_size("nesscoder/TimeCycle")`
 
 <!-- badges: end -->
+
+<!--
+[![BioC status](http://www.bioconductor.org/shields/build/release/bioc/TimeCycle.svg)](https://bioconductor.org/checkResults/release/bioc-LATEST/TimeCycle)
+Add Doi when published
+badge_doi("10.1111/2041-210X.12628", "yellow")
+-->
 
 <img src="man/figures/logo.png" width="200" align="right"/>
 
