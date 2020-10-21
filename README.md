@@ -39,8 +39,18 @@ status](https://github.com/nesscoder/TimeCycle/workflows/R-CMD-check/badge.svg)]
 Installation
 ------------
 
-    # Install release version from CRAN
-    install.packages("TimeCycle")
+TimeCycle has not yet been published on Bioconductor. In the interim
+download the development version from GitHub.
+
+<!--
+```r
+# Install release version from CRAN
+install.packages("TimeCycle")
+
+# Install development version from GitHub
+devtools::install_github("nesscoder/TimeCycle")
+```
+-->
 
     # Install development version from GitHub
     devtools::install_github("nesscoder/TimeCycle")
@@ -88,7 +98,7 @@ period of 24-h.
     #> [1] "Computing Persistence Scores"
     #> [1] "Calculating p-values"
     #> [1] "TimeCycle Completed"
-    #> [1] "Analysis Time: 00:00:56"
+    #> [1] "Analysis Time: 00:00:53"
 
 Once TimeCycle has finished processing, simply check the output and
 filter for the genes of interest. In this example, we filter for genes

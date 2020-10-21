@@ -35,10 +35,19 @@ suppressMessages(library(tidyverse))
 
 ## Installation
 
-``` r
+TimeCycle has not yet been published on Bioconductor. In the interim download the development version from GitHub.
+
+<!--
+```r
 # Install release version from CRAN
 install.packages("TimeCycle")
 
+# Install development version from GitHub
+devtools::install_github("nesscoder/TimeCycle")
+```
+-->
+
+```r
 # Install development version from GitHub
 devtools::install_github("nesscoder/TimeCycle")
 ```
