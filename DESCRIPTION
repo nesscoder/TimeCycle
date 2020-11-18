@@ -1,17 +1,12 @@
 Package: TimeCycle
 Title: TimeCycle: Topology Inspired MEthod for the Detection of Cycling Transcripts
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: 
     	c(person(given = "Elan",
            family = "Ness-Cohn",
            role = c("aut", "cre"),
            email = "elanness-cohn2017@u.northwestern.edu",
            comment = c(ORCID = "0000-0002-3935-6667")),
-	person(given = "Ravi",
-		family = "Allada", 
-		email = "r-allada@northwestern.edu",
-		role = "aut",
-		comment = c(ORCID = "0000-0003-4371-1577")),
 	person(given = "Rosemary",
 		family = "Braun", 
 		email = "rbraun@northwestern.edu",
