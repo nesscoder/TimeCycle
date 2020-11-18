@@ -1,13 +1,11 @@
 authors:
   Elan Ness-Cohn:
     href: "https://sites.northwestern.edu/elannesscohn/"
-  Ravi Allada:
-    href: "https://neurobiology.northwestern.edu/people/core-faculty/ravi-allada.html"
   Rosemary Braun:
     href: "https://sites.northwestern.edu/braunlab/"
   NSF-Simons Center For Quatitative Biology:
     href: "https://www.quantitativebiology.northwestern.edu/"
-    html: "<img src='./../man/figures/QBio.png' height=40>"
+    html: "<img src='reference/figures/QBio.png' height=40>"
 
 home:
   links:
