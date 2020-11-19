@@ -5,7 +5,7 @@ authors:
     href: "https://sites.northwestern.edu/braunlab/"
   NSF-Simons Center For Quatitative Biology:
     href: "https://www.quantitativebiology.northwestern.edu/"
-    html: "<img src='reference/figures/QBio.png' height=40>"
+    html: "<img src='https://nesscoder.github.io/TimeCycle/QBio.png' height=40>"
 
 home:
   links:
