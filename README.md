@@ -9,7 +9,7 @@ TimeCycle
 status](https://github.com/nesscoder/TimeCycle/workflows/R-CMD-check/badge.svg)](https://github.com/nesscoder/TimeCycle/actions)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![](https://img.shields.io/badge/devel%20version-0.0.0.9000-blue.svg)](https://github.com/nesscoder/TimeCycle)
+[![](https://img.shields.io/badge/devel%20version-1.0.0-blue.svg)](https://github.com/nesscoder/TimeCycle)
 [![](https://img.shields.io/github/languages/code-size/nesscoder/TimeCycle.svg)](https://github.com/nesscoder/TimeCycle)
 
 <!-- badges: end -->
@@ -23,14 +23,18 @@ badge_doi("10.1111/2041-210X.12628", "yellow")
 
 > TimeCycle is designed to detect rhythmic genes in circadian
 > transcriptomic time-series data. Based on [topological data
-> analysis](articles/TimeCycle.html#takens-theorem-1), TimeCycle
-> provides a reliable and efficent reference-free framework for cycle
-> detection — handling custom sampling schemes, replicates, and missing
-> data.
+> analysis](https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#takens-theorem-1),
+> TimeCycle provides a reliable and efficent reference-free framework
+> for cycle detection — handling custom sampling schemes, replicates,
+> and missing data.
 
--   To learn more about the [theory](articles/TimeCycle.html#theory-1)
-    and [usage](articles/TimeCycle.html#usage-1) of TimeCycle, see
-    `vignette("TimeCycle")`.
+-   To learn more about the
+    [theory](https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#theory-1)
+    and
+    [usage](https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#usage-1)
+    of TimeCycle, see our [video
+    overview](https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#video-overview-1)
+    and following `vignette("TimeCycle")`.
 -   For a comprehensive analysis and discussion of TimeCycle’s
     performance in detecting rhythmic genes, see the accompanying
     [paper](INSERT%20PAPER%20LINK).
@@ -76,8 +80,9 @@ period of 24-h.
 
 -   See `zhang2014()` for additional information about the example data
     set.
--   See [replicate labels](articles/TimeCycle.html#replicate-labels) for
-    additional information regarding `repLabel`.
+-   See [replicate
+    labels](https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#replicate-labels)
+    for additional information regarding `repLabel`.
 
 <!-- -->
 
@@ -103,7 +108,7 @@ period of 24-h.
     #> [1] "Computing Persistence Scores"
     #> [1] "Calculating p-values"
     #> [1] "TimeCycle Completed"
-    #> [1] "Analysis Time: 00:00:53"
+    #> [1] "Analysis Time: 00:00:57"
 
 Once TimeCycle has finished processing, simply check the output and
 filter for the genes of interest. In this example, we filter for genes

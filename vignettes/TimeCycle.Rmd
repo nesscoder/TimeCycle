@@ -28,8 +28,6 @@ h5 {
 
 -   For details pertaining to the data and source code used in the analysis, see the [`nesscoder/TimeCycle-data`](https://github.com/nesscoder/TimeCycle-data) git repository.
 
-------------------------------------------------------------------------
-
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -37,7 +35,25 @@ knitr::opts_chunk$set(
   fig.align = "center"
 )
 library(rmarkdown)
+library(vembedr)
 ```
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+## **Video Overview**
+
+
+```{r, echo= FALSE}
+
+embed_vimeo("481714748")%>%
+  use_bs_responsive()
+```
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
 
 ## **Theory**
 

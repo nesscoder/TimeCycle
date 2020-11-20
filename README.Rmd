@@ -35,9 +35,9 @@ badge_doi("10.1111/2041-210X.12628", "yellow")
 
 <img src="man/figures/logo.png" width="200" align="right"/>
 
-> TimeCycle is designed to detect rhythmic genes in circadian transcriptomic time-series data. Based on [topological data analysis](articles/TimeCycle.html#takens-theorem-1), TimeCycle provides a reliable and efficent reference-free framework for cycle detection --- handling custom sampling schemes, replicates, and missing data.
+> TimeCycle is designed to detect rhythmic genes in circadian transcriptomic time-series data. Based on [topological data analysis](https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#takens-theorem-1), TimeCycle provides a reliable and efficent reference-free framework for cycle detection --- handling custom sampling schemes, replicates, and missing data.
 
--   To learn more about the [theory](articles/TimeCycle.html#theory-1) and [usage](articles/TimeCycle.html#usage-1) of TimeCycle, see `vignette("TimeCycle")`.
+-   To learn more about the [theory](https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#theory-1) and [usage](https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#usage-1) of TimeCycle, see our [video overview](https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#video-overview-1) and following `vignette("TimeCycle")`.
 -   For a comprehensive analysis and discussion of TimeCycle's performance in detecting rhythmic genes, see the accompanying [paper](INSERT%20PAPER%20LINK).
 -   For details pertaining to the data and source code used in the analysis, see the [`nesscoder/TimeCycle-data`](https://github.com/nesscoder/TimeCycle-data) git repository.
 
@@ -71,7 +71,7 @@ Circadian cycling detection can easily be achieved using TimeCycle's main functi
 In this example, we will use the `zhang2014()` gene expression set consists of mouse livers sampled every 2-h for 48-h with a single replicate (i.e. 24 time points). TimeCycle assumes a default circadian period of 24-h.
 
 -   See `zhang2014()` for additional information about the example data set.
--   See [replicate labels](articles/TimeCycle.html#replicate-labels) for additional information regarding `repLabel`.
+-   See [replicate labels](https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#replicate-labels) for additional information regarding `repLabel`.
 
 ```{r, echo=F, include = FALSE}
 suppressMessages(TimeCycle(data = zhang2014[1:3,], repLabel = rep(1,24), period = 24, resamplings = 10))
