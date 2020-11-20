@@ -28,7 +28,8 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown,
-    tidyverse
+    tidyverse,
+    vembedr
 VignetteBuilder: knitr
 URL: https://github.com/nesscoder/TimeCycle
 BugReports: https://github.com/nesscoder/TimeCycle/issues
