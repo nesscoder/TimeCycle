@@ -1,6 +1,6 @@
 
-TimeCycle
-=========
+TimeCycle: Topology Inspired MEthod for the Detection of Cycling Transcripts in Circadian Time-Series Data
+==========================================================================================================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -110,7 +110,7 @@ period of 24-h.
     #> [1] "Computing Persistence Scores"
     #> [1] "Calculating p-values"
     #> [1] "TimeCycle Completed"
-    #> [1] "Analysis Time: 00:00:56"
+    #> [1] "Analysis Time: 00:01:01"
 
 Once TimeCycle has finished processing, simply check the output and
 filter for the genes of interest. In this example, we filter for genes

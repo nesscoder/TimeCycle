@@ -2,7 +2,7 @@
 output: github_document
 ---
 
-# TimeCycle
+# TimeCycle: Topology Inspired MEthod for the Detection of Cycling Transcripts in Circadian Time-Series Data
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
