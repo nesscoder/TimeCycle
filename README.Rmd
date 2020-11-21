@@ -20,6 +20,7 @@ library(badger)
 
 <!-- badges: start -->
 
+`r badge_doi("10.1101/2020.11.19.389981", "yellow")`
 [![R build status](https://github.com/nesscoder/TimeCycle/workflows/R-CMD-check/badge.svg)](https://github.com/nesscoder/TimeCycle/actions)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) 
 `r badge_devel("nesscoder/TimeCycle", "blue")`
@@ -30,7 +31,8 @@ library(badger)
 <!--
 [![BioC status](http://www.bioconductor.org/shields/build/release/bioc/TimeCycle.svg)](https://bioconductor.org/checkResults/release/bioc-LATEST/TimeCycle)
 Add Doi when published
-badge_doi("10.1111/2041-210X.12628", "yellow")
+
+https://doi.org/10.1101/2020.11.19.389981
 -->
 
 <img src="man/figures/logo.png" width="200" align="right"/>
@@ -38,7 +40,7 @@ badge_doi("10.1111/2041-210X.12628", "yellow")
 > TimeCycle is designed to detect rhythmic genes in circadian transcriptomic time-series data. Based on [topological data analysis](https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#takens-theorem-1), TimeCycle provides a reliable and efficent reference-free framework for cycle detection --- handling custom sampling schemes, replicates, and missing data.
 
 -   To learn more about the [theory](https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#theory-1) and [usage](https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#usage-1) of TimeCycle, see our [video overview](https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#video-overview-1) and following `vignette("TimeCycle")`.
--   For a comprehensive analysis and discussion of TimeCycle's performance in detecting rhythmic genes, see the accompanying [paper](INSERT%20PAPER%20LINK).
+-   For a comprehensive analysis and discussion of TimeCycle's performance in detecting rhythmic genes, see the accompanying [paper](https://doi.org/10.1101/2020.11.19.389981).
 -   For details pertaining to the data and source code used in the analysis, see the [`nesscoder/TimeCycle-data`](https://github.com/nesscoder/TimeCycle-data) git repository.
 
 ***

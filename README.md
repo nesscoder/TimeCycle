@@ -5,6 +5,7 @@ TimeCycle
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
 
+[![](https://img.shields.io/badge/doi-10.1101/2020.11.19.389981-yellow.svg)](https://doi.org/10.1101/2020.11.19.389981)
 [![R build
 status](https://github.com/nesscoder/TimeCycle/workflows/R-CMD-check/badge.svg)](https://github.com/nesscoder/TimeCycle/actions)
 [![Lifecycle:
@@ -16,7 +17,8 @@ maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www
 <!--
 [![BioC status](http://www.bioconductor.org/shields/build/release/bioc/TimeCycle.svg)](https://bioconductor.org/checkResults/release/bioc-LATEST/TimeCycle)
 Add Doi when published
-badge_doi("10.1111/2041-210X.12628", "yellow")
+
+https://doi.org/10.1101/2020.11.19.389981
 -->
 
 <img src="man/figures/logo.png" width="200" align="right"/>
@@ -37,7 +39,7 @@ badge_doi("10.1111/2041-210X.12628", "yellow")
     and following `vignette("TimeCycle")`.
 -   For a comprehensive analysis and discussion of TimeCycle’s
     performance in detecting rhythmic genes, see the accompanying
-    [paper](INSERT%20PAPER%20LINK).
+    [paper](https://doi.org/10.1101/2020.11.19.389981).
 -   For details pertaining to the data and source code used in the
     analysis, see the
     [`nesscoder/TimeCycle-data`](https://github.com/nesscoder/TimeCycle-data)
@@ -108,7 +110,7 @@ period of 24-h.
     #> [1] "Computing Persistence Scores"
     #> [1] "Calculating p-values"
     #> [1] "TimeCycle Completed"
-    #> [1] "Analysis Time: 00:00:57"
+    #> [1] "Analysis Time: 00:00:56"
 
 Once TimeCycle has finished processing, simply check the output and
 filter for the genes of interest. In this example, we filter for genes

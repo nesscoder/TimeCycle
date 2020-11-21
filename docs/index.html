@@ -101,7 +101,8 @@
 <!--
 [![BioC status](http://www.bioconductor.org/shields/build/release/bioc/TimeCycle.svg)](https://bioconductor.org/checkResults/release/bioc-LATEST/TimeCycle)
 Add Doi when published
-badge_doi("10.1111/2041-210X.12628", "yellow")
+
+https://doi.org/10.1101/2020.11.19.389981
 -->
 <p><img src="reference/figures/logo.png" width="200" align="right"></p>
 <blockquote>
@@ -109,7 +110,7 @@ badge_doi("10.1111/2041-210X.12628", "yellow")
 </blockquote>
 <ul>
 <li>To learn more about the <a href="https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#theory-1">theory</a> and <a href="https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#usage-1">usage</a> of TimeCycle, see our <a href="https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#video-overview-1">video overview</a> and following <code><a href="articles/TimeCycle.html">vignette("TimeCycle")</a></code>.</li>
-<li>For a comprehensive analysis and discussion of TimeCycle’s performance in detecting rhythmic genes, see the accompanying <a href="INSERT%20PAPER%20LINK">paper</a>.</li>
+<li>For a comprehensive analysis and discussion of TimeCycle’s performance in detecting rhythmic genes, see the accompanying <a href="https://doi.org/10.1101/2020.11.19.389981">paper</a>.</li>
 <li>For details pertaining to the data and source code used in the analysis, see the <a href="https://github.com/nesscoder/TimeCycle-data"><code>nesscoder/TimeCycle-data</code></a> git repository.</li>
 </ul>
 <hr>
@@ -161,7 +162,7 @@ devtools::install_github("nesscoder/TimeCycle")
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true"></a><span class="co">#&gt; [1] "Computing Persistence Scores"</span></span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true"></a><span class="co">#&gt; [1] "Calculating p-values"</span></span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true"></a><span class="co">#&gt; [1] "TimeCycle Completed"</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true"></a><span class="co">#&gt; [1] "Analysis Time: 00:00:57"</span></span></code></pre></div>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true"></a><span class="co">#&gt; [1] "Analysis Time: 00:00:56"</span></span></code></pre></div>
 <p>Once TimeCycle has finished processing, simply check the output and filter for the genes of interest. In this example, we filter for genes with a <strong>period of oscillation between 22 and 26</strong> hours and an <strong>FDR &lt; 0.05</strong>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a></span>
@@ -191,7 +192,7 @@ devtools::install_github("nesscoder/TimeCycle")
 </li>
 <li>Report a bug at <br><a href="https://github.com/nesscoder/TimeCycle/issues">https://​github.com/​nesscoder/​TimeCycle/​issues</a>
 </li>
-<li>Checkout TimeCycle's publication at <br><a href="http://website.com">http://​website.com</a>
+<li>Checkout TimeCycle's publication at <br><a href="https://doi.org/10.1101/2020.11.19.389981">https://​doi.org/​10.1101/​2020.11.19.389981</a>
 </li>
 <li>Browse TimeCycle's publication source code at <br><a href="https://github.com/nesscoder/TimeCycle-data">https://​github.com/​nesscoder/​TimeCycle-data</a>
 </li>
@@ -219,6 +220,7 @@ devtools::install_github("nesscoder/TimeCycle")
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
+<li><a href="https://doi.org/10.1101/2020.11.19.389981"><img src="https://img.shields.io/badge/doi-10.1101/2020.11.19.389981-yellow.svg"></a></li>
 <li><a href="https://github.com/nesscoder/TimeCycle/actions"><img src="https://github.com/nesscoder/TimeCycle/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
 <li><a href="https://github.com/nesscoder/TimeCycle"><img src="https://img.shields.io/badge/devel%20version-1.0.0-blue.svg"></a></li>

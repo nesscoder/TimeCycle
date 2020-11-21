@@ -16,7 +16,7 @@
 #'
 #' @references{
 #' \itemize{
-#'    \item{Link to TimeCycle Paper!}
+#'    \item{A pre-print version of TimeCycle is available on BioRxiv at \url{https://doi.org/10.1101/2020.11.19.389981}}
 #'    }
 #'    \subsection{TDA Package References}{
 #'    \itemize{
