@@ -45,21 +45,19 @@
 #' # Search for genes with period of 24 hours.
 #'
 #' #set seed for reproducibility with random variables in example usage
-#' set.seed(1234)
+#' #> set.seed(1234)
 #'
-#' TimeCycleResults <- TimeCycle(data = zhang2014[1:100,],
-#'                               repLabel = rep(1,24),
-#'                               period = 24,
-#'                               cores = 2,
-#'                               resamplings = 10)
+#' #> TimeCycleResults <- TimeCycle(data = zhang2014,
+#' #>                               repLabel = rep(1,24),
+#' #>                               period = 24)
 #'
 #' # Check number of genes with FDR < 0.05 and period between 22 to 26 hours.
-#' library(tidyverse)
+#' #> library(tidyverse)
 #'
-#' TimeCycleResults %>%
-#'    filter(22 < Period.in.Hours & Period.in.Hours < 26) %>%
-#'    filter(pVals.adj < 0.05) %>%
-#'    glimpse()
+#' #> TimeCycleResults %>%
+#' #>    filter(22 < Period.in.Hours & Period.in.Hours < 26) %>%
+#' #>    filter(pVals.adj < 0.05) %>%
+#' #>    glimpse()
 #'
 #'@export
 TimeCycle <- function(data,
