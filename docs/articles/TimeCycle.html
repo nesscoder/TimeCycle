@@ -46,7 +46,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -75,7 +75,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/nesscoder/TimeCycle/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -89,7 +89,7 @@
 
       
 
-      </header><script src="TimeCycle_files/header-attrs-2.4/header-attrs.js"></script><link href="TimeCycle_files/vembedr-0.1.3.9003/css/vembedr.css" rel="stylesheet">
+      </header><script src="TimeCycle_files/header-attrs-2.6/header-attrs.js"></script><link href="TimeCycle_files/vembedr-0.1.4/css/vembedr.css" rel="stylesheet">
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -272,15 +272,15 @@ S=\begin{cases}
 <li><p>Specify the genes names in the row names</p></li>
 <li><p>Specify the ZT in the column names</p></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co"># Pseudo code</span>
 <span class="co"># df = data.frame of expression values (genes x time point)</span>
 <span class="co"># geneNames = a vector that holds the name of each gene</span>
 
 <span class="va">ztTimes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">48</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"ZT_"</span>, <span class="va">ztTimes</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">geneNames</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">geneNames</span></code></pre></div>
 <p>A properly formatted <code>data.frame</code> should look as follows:</p>
 <table class="table"><tbody>
 <tr class="odd">
@@ -418,12 +418,12 @@ S=\begin{cases}
 </tbody></table>
 <p><strong>Example Replicate Labels</strong></p>
 <p>With even replicates, the <strong>number of replicates at each ZT time</strong> should be explicitly specified in a vector — e.g. a data set with 2 replicates at 24 different ZT times would have a replicate label vector of length 24, even through there are 48 samples total:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="co"># Each ZT time point in the data.frame has 2 replicates</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Each ZT time point in the data.frame has 2 replicates</span>
 <span class="va">replicateLabels_even</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">2</span>, times <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">df_evenReplicates</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span>
 
 <span class="co"># Run TimeCycle with default setting</span>
-<span class="fu"><a href="../reference/TimeCycle.html">TimeCycle</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_evenReplicates</span>, repLab <span class="op">=</span> <span class="va">replicateLabels_even</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="../reference/TimeCycle.html">TimeCycle</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_evenReplicates</span>, repLab <span class="op">=</span> <span class="va">replicateLabels_even</span><span class="op">)</span></code></pre></div>
 <p>In the case of <code><a href="../reference/zhang2014.html">zhang2014()</a></code> example data set — sampled every 2 hours for 48 hours (i.e. 24 ZT times) — there is only 1 sample per time point. As a result, the replicate label would have 1 sample for all 24 time points: <code>replicateLabel &lt;- rep(x = 1, times = ncol(zhang2014))</code>.</p>
 <hr>
 </div>
@@ -508,8 +508,8 @@ S=\begin{cases}
 </tbody></table>
 <p><strong>Example Replicate Labels</strong></p>
 <p>With uneven replicates,the <strong>number of replicates at each ZT time</strong> should be explicitly specified in a vector — e.g. a data set with 24 different ZT times would have a replicate label vector of length 24, even through there may be more than 24 samples total. Do <strong>NOT</strong> include unsampled ZT time with 0 replicates.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="co"># Pseudo code for example data.frame above</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Pseudo code for example data.frame above</span>
 <span class="co"># Specify the number or replicates for each ZT time point in the data.frame</span>
 <span class="co"># ... = replicate values at omited ZT times. Actual code must specify.</span>
 <span class="va">replicateLabel_uneven</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">1</span>,<span class="va">...</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>
@@ -518,7 +518,7 @@ S=\begin{cases}
 <span class="co">#&gt; 24</span>
 
 <span class="co"># Run TimeCycle with default setting</span>
-<span class="fu"><a href="../reference/TimeCycle.html">TimeCycle</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_unevenReplicates</span>, repLab <span class="op">=</span> <span class="va">replicateLabels_uneven</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="../reference/TimeCycle.html">TimeCycle</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_unevenReplicates</span>, repLab <span class="op">=</span> <span class="va">replicateLabels_uneven</span><span class="op">)</span></code></pre></div>
 <hr>
 </div>
 </div>
@@ -585,8 +585,8 @@ S=\begin{cases}
 <h3 class="hasAnchor">
 <a href="#parameter-selection" class="anchor"></a>Parameter Selection</h3>
 <p>The main TimeCycle function’s parameters are defined by default for the minimal recommended sampling scheme of every 2-h for 48-h (<a href="https://doi.org/10.1177/0748730417728663">Hughes et al., 2017</a>; <a href="https://doi.org/10.1371/journal.pcbi.1007666">Laloum &amp; Robinson-Rechavi, 2020</a>; <a href="https://doi.org/10.1177%2F0748730420934672">Ness-Cohn et al., 2020</a>).</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="../reference/TimeCycle.html">TimeCycle</a></span><span class="op">(</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/TimeCycle.html">TimeCycle</a></span><span class="op">(</span>
   <span class="va">data</span>,
   <span class="va">repLabel</span>, 
   resamplings <span class="op">=</span> <span class="fl">10000</span>,
@@ -596,7 +596,7 @@ S=\begin{cases}
   cores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html">detectCores</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fl">2</span>,
   laplacian <span class="op">=</span> <span class="cn">T</span>,
   linearTrend <span class="op">=</span> <span class="cn">F</span>
-<span class="op">)</span></pre></div>
+<span class="op">)</span></code></pre></div>
 <p>For defining the <code>data</code> and <code>repLabel</code> inputs, see <a href="#input">Input Data Structure</a> and <a href="#repLab">Replicate Labels</a> section above. The <strong>default parameters are recommended</strong> for all sampling schemes that meet the minimal recommended sampling requirements.</p>
 <p>For Time-series sampled:</p>
 <ul>

@@ -46,7 +46,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -75,7 +75,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/nesscoder/TimeCycle/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -162,7 +162,7 @@ devtools::install_github("nesscoder/TimeCycle")
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true"></a><span class="co">#&gt; [1] "Computing Persistence Scores"</span></span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true"></a><span class="co">#&gt; [1] "Calculating p-values"</span></span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true"></a><span class="co">#&gt; [1] "TimeCycle Completed"</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true"></a><span class="co">#&gt; [1] "Analysis Time: 00:01:01"</span></span></code></pre></div>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true"></a><span class="co">#&gt; [1] "Analysis Time: 00:00:47"</span></span></code></pre></div>
 <p>Once TimeCycle has finished processing, simply check the output and filter for the genes of interest. In this example, we filter for genes with a <strong>period of oscillation between 22 and 26</strong> hours and an <strong>FDR &lt; 0.05</strong>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a></span>
@@ -172,7 +172,7 @@ devtools::install_github("nesscoder/TimeCycle")
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">glimpse</span>()</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="co">#&gt; Rows: 1,514</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a><span class="co">#&gt; Columns: 7</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a><span class="co">#&gt; $ sampleNames     &lt;fct&gt; 1700001C19Rik, 1700010I14Rik, 1700030K09Rik, 1810030O…</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a><span class="co">#&gt; $ sampleNames     &lt;chr&gt; "1700001C19Rik", "1700010I14Rik", "1700030K09Rik", "1…</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a><span class="co">#&gt; $ perScore        &lt;dbl&gt; 0.1183563, 0.1922202, 0.1786031, 0.1501900, 0.1348346…</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a><span class="co">#&gt; $ pVals           &lt;dbl&gt; 0.0078, 0.0005, 0.0007, 0.0028, 0.0042, 0.0007, 0.004…</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a><span class="co">#&gt; $ pVals.adj       &lt;dbl&gt; 0.04910976, 0.01256641, 0.01274059, 0.02827061, 0.033…</span></span>

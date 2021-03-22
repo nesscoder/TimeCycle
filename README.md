@@ -1,6 +1,5 @@
 
-TimeCycle: Topology Inspired MEthod for the Detection of Cycling Transcripts in Circadian Time-Series Data
-==========================================================================================================
+# TimeCycle: Topology Inspired MEthod for the Detection of Cycling Transcripts in Circadian Time-Series Data
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -47,8 +46,7 @@ https://doi.org/10.1101/2020.11.19.389981
 
 ------------------------------------------------------------------------
 
-Installation
-------------
+## Installation
 
 TimeCycle has not yet been published on Bioconductor. In the interim
 download the development version from GitHub.
@@ -68,8 +66,7 @@ devtools::install_github("nesscoder/TimeCycle")
 
 ------------------------------------------------------------------------
 
-Usage
------
+## Usage
 
 Circadian cycling detection can easily be achieved using TimeCycle’s
 main function. Get started with `TimeCycle()` by defining the data and
@@ -110,7 +107,7 @@ period of 24-h.
     #> [1] "Computing Persistence Scores"
     #> [1] "Calculating p-values"
     #> [1] "TimeCycle Completed"
-    #> [1] "Analysis Time: 00:01:01"
+    #> [1] "Analysis Time: 00:00:47"
 
 Once TimeCycle has finished processing, simply check the output and
 filter for the genes of interest. In this example, we filter for genes
@@ -125,7 +122,7 @@ with a **period of oscillation between 22 and 26** hours and an **FDR
       glimpse()
     #> Rows: 1,514
     #> Columns: 7
-    #> $ sampleNames     <fct> 1700001C19Rik, 1700010I14Rik, 1700030K09Rik, 1810030O…
+    #> $ sampleNames     <chr> "1700001C19Rik", "1700010I14Rik", "1700030K09Rik", "1…
     #> $ perScore        <dbl> 0.1183563, 0.1922202, 0.1786031, 0.1501900, 0.1348346…
     #> $ pVals           <dbl> 0.0078, 0.0005, 0.0007, 0.0028, 0.0042, 0.0007, 0.004…
     #> $ pVals.adj       <dbl> 0.04910976, 0.01256641, 0.01274059, 0.02827061, 0.033…
