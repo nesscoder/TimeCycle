@@ -75,11 +75,8 @@ For additional help with parameter selection, see TimeCycle's vignette:
    }
    \subsection{TDA Package References}{
    \itemize{
-   \item{Fasy, Brittany & Kim, Jisu & Lecci, Fabrizio & Maria, Clément. (2014). "Introduction to the R package TDA".}
-   \item{Maria C (2014). "GUDHI, Simplicial Complexes and Persistent Homology Packages." \url{ https://project.inria.fr/gudhi/software/ }}
-   \item{Morozov D (2007). "Dionysus, a C++ library for computing persistent homology". \url{ http://www.mrzv.org/software/dionysus/ }}
-   \item{Edelsbrunner H, Harer J (2010). "Computational topology: an introduction." American Mathematical Society.}
-   \item{Fasy B, Lecci F, Rinaldo A, Wasserman L, Balakrishnan S, Singh A (2013). "Statistical Inference For Persistent Homology." (arXiv:1303.7117). Annals of Statistics.}
+     \item Wadhwa RR, Williamson DFK, Dhawan A, Scott JG. (2018). "TDAstats: R pipeline for computing persistent homology in topological data analysis." \emph{Journal of Open Source Software}. 2018; 3(28): 860. doi:\href{https://doi.org/10.21105/joss.00860}{[10.21105/joss.00860]}
+     \item Bauer U. (2019). "Ripser: Efficient computation of Vietoris-Rips persistence barcodes." \emph{arXiv}: 1908.02518.
    }
 
 
