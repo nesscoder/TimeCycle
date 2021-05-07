@@ -17,7 +17,7 @@ getRepAvgedDataFrame <- function(data, repLabel) {
   # get Column Names
   colnames <- colnames(data)
   # remove replicate label from colnames if they exist
-  colnames <- gsub(pattern = "_rep.", replacement = "", colnames)
+  colnames <- gsub(pattern = "_r.*", replacement = "", tolower(colnames))
   # get unique ZT time for each point
   colnames <- unique(as.numeric(unlist(regmatches(colnames, gregexpr("[[:digit:]]+\\.*[[:digit:]]*", colnames)))))
 
