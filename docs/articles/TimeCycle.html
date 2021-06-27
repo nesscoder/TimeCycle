@@ -117,7 +117,7 @@ h5 {
 <p>The following vignette describes the theory and usage of TimeCycle.</p>
 </blockquote>
 <ul>
-<li><p>For a comprehensive analysis and discussion of TimeCycle’s performance in detecting rhythmic genes, see the accompanying <a href="https://doi.org/10.1101/2020.11.19.389981">paper</a>.</p></li>
+<li><p>For a comprehensive analysis and discussion of TimeCycle’s performance in detecting rhythmic genes, see the accompanying <a href="https://doi.org/10.1093/bioinformatics/btab476">paper</a>.</p></li>
 <li><p>For details pertaining to the data and source code used in the analysis, see the <a href="https://github.com/nesscoder/TimeCycle-data"><code>nesscoder/TimeCycle-data</code></a> git repository.</p></li>
 </ul>
 <hr>
@@ -604,9 +604,9 @@ S=\begin{cases}
 <li><p><a href="#sparseTS">less frequently than every 2-h</a></p></li>
 </ul>
 <p>we recommend setting <code>maxLag = 3</code>, rather than the default <code>maxLag = 5</code>. See sections below for details.</p>
-<div id="warning-data-sets-sampled-under-the-minimal-recommended-sampling-scheme-of-every-2-h-for-48-h-have-been-shown-to-be-unreliable-across-cycling-detection-methods-hughes-et-al--2017-laloum-robinson-rechavi-2020-ness-cohn-et-al--2020-️" class="section level5">
+<div id="warning-data-sets-sampled-under-the-minimal-recommended-sampling-scheme-of-every-2-h-for-48-h-have-been-shown-to-be-unreliable-across-cycling-detection-methods-hughes-et-al--2017-laloum-robinson-rechavi-2020-ness-cohn-et-al--2020" class="section level5">
 <h5 class="hasAnchor">
-<a href="#warning-data-sets-sampled-under-the-minimal-recommended-sampling-scheme-of-every-2-h-for-48-h-have-been-shown-to-be-unreliable-across-cycling-detection-methods-hughes-et-al--2017-laloum-robinson-rechavi-2020-ness-cohn-et-al--2020-%EF%B8%8F" class="anchor"></a>⚠️ Warning: Data sets sampled under the minimal recommended sampling scheme of every 2-h for 48-h have been shown to be unreliable across cycling detection methods (<a href="https://doi.org/10.1177/0748730417728663">Hughes et al., 2017</a>; <a href="https://doi.org/10.1371/journal.pcbi.1007666">Laloum &amp; Robinson-Rechavi, 2020</a>; <a href="https://doi.org/10.1177%2F0748730420934672">Ness-Cohn et al., 2020</a>) ⚠️</h5>
+<a href="#warning-data-sets-sampled-under-the-minimal-recommended-sampling-scheme-of-every-2-h-for-48-h-have-been-shown-to-be-unreliable-across-cycling-detection-methods-hughes-et-al--2017-laloum-robinson-rechavi-2020-ness-cohn-et-al--2020" class="anchor"></a>⚠️ Warning: Data sets sampled under the minimal recommended sampling scheme of every 2-h for 48-h have been shown to be unreliable across cycling detection methods (<a href="https://doi.org/10.1177/0748730417728663">Hughes et al., 2017</a>; <a href="https://doi.org/10.1371/journal.pcbi.1007666">Laloum &amp; Robinson-Rechavi, 2020</a>; <a href="https://doi.org/10.1177%2F0748730420934672">Ness-Cohn et al., 2020</a>) ⚠️</h5>
 <hr>
 </div>
 <div id="shortTS" class="section level4">
@@ -627,9 +627,9 @@ S=\begin{cases}
 <div id="prioritize-detection-of-linear-trending-signals" class="section level4">
 <h4 class="hasAnchor">
 <a href="#prioritize-detection-of-linear-trending-signals" class="anchor"></a>Prioritize Detection of Linear Trending Signals</h4>
-<div id="warning-setting-lineartrend-t-may-increase-false-positive-rates---not-recommended---use-with-caution-️" class="section level5">
+<div id="warning-setting-lineartrend-t-may-increase-false-positive-rates---not-recommended---use-with-caution" class="section level5">
 <h5 class="hasAnchor">
-<a href="#warning-setting-lineartrend-t-may-increase-false-positive-rates---not-recommended---use-with-caution-%EF%B8%8F" class="anchor"></a>⚠️ Warning: Setting <code>linearTrend = T</code> may increase false positive rates - Not Recommended - Use with Caution ⚠️</h5>
+<a href="#warning-setting-lineartrend-t-may-increase-false-positive-rates---not-recommended---use-with-caution" class="anchor"></a>⚠️ Warning: Setting <code>linearTrend = T</code> may increase false positive rates - Not Recommended - Use with Caution ⚠️</h5>
 <p>TimeCycle has been shown to have decreased performance in detecting linear trending signals for time-series sampled longer than 48-h. As time-series sampling is extended, linear and damped oscillatory trends become more pronounced — dominating the underlying signal and hindering <a href="TimeCycle.html#detrending-via-dimension-reduction-1">detrending</a> in the state space. Excluding trending signals can be (un)desirable depending on the oscillatory patterns of interest in the context of the biological question being asked.</p>
 <p>To prioritize the detection of linear trending signals with TimeCycle, set the <code>linearTrend = T</code>.</p>
 <p>In this case, TimeCycle processes the derivative the autocorrelation function before preforming the topological analysis. This process removes the linear trend, while persevering the oscillatory dynamics.</p>

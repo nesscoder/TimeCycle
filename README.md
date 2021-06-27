@@ -4,7 +4,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
 
-[![](https://img.shields.io/badge/doi-10.1101/2020.11.19.389981-yellow.svg)](https://doi.org/10.1101/2020.11.19.389981)
+[![](https://img.shields.io/badge/doi-10.1093/bioinformatics/btab476-yellow.svg)](https://doi.org/10.1093/bioinformatics/btab476)
 [![R build
 status](https://github.com/nesscoder/TimeCycle/workflows/R-CMD-check/badge.svg)](https://github.com/nesscoder/TimeCycle/actions)
 [![Lifecycle:
@@ -38,7 +38,7 @@ https://doi.org/10.1101/2020.11.19.389981
     and following `vignette("TimeCycle")`.
 -   For a comprehensive analysis and discussion of TimeCycle’s
     performance in detecting rhythmic genes, see the accompanying
-    [paper](https://doi.org/10.1101/2020.11.19.389981).
+    [paper](https://doi.org/10.1093/bioinformatics/btab476).
 -   For details pertaining to the data and source code used in the
     analysis, see the
     [`nesscoder/TimeCycle-data`](https://github.com/nesscoder/TimeCycle-data)
@@ -61,8 +61,10 @@ devtools::install_github("nesscoder/TimeCycle")
 ```
 -->
 
-    # Install development version from GitHub
-    devtools::install_github("nesscoder/TimeCycle")
+``` r
+# Install development version from GitHub
+devtools::install_github("nesscoder/TimeCycle")
+```
 
 ------------------------------------------------------------------------
 
@@ -83,52 +85,54 @@ period of 24-h.
     labels](https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#replicate-labels)
     for additional information regarding `repLabel`.
 
-<!-- -->
+``` r
+library(TimeCycle)
 
-    library(TimeCycle)
+#set seed for reproducibility with random variables in example usage
+set.seed(1234) 
 
-    #set seed for reproducibility with random variables in example usage
-    set.seed(1234) 
-
-    TimeCycleResults <- TimeCycle(data = zhang2014, repLabel = rep(1,24))
-    #> 
-    #>       ########################################################################################
-    #>       ###      ████████ ██ ███    ███ ███████  ██████ ██    ██  ██████ ██      ███████     ###
-    #>       ###         ██    ██ ████  ████ ██      ██       ██  ██  ██      ██      ██          ###
-    #>       ###         ██    ██ ██ ████ ██ █████   ██        ████   ██      ██      █████       ###
-    #>       ###         ██    ██ ██  ██  ██ ██      ██         ██    ██      ██      ██          ###
-    #>       ###         ██    ██ ██      ██ ███████  ██████    ██     ██████ ███████ ███████     ###
-    #>       ########################################################################################
-    #> [1] "Starting TimeCycle"
-    #> [1] "Pre-Processing Data"
-    #> [1] "Computing Periods"
-    #> [1] "Pre-Processing Null Distribution"
-    #> [1] "Computing Null Distribution"
-    #> [1] "Computing Persistence Scores"
-    #> [1] "Calculating p-values"
-    #> [1] "TimeCycle Completed"
-    #> [1] "Analysis Time: 00:00:47"
+TimeCycleResults <- TimeCycle(data = zhang2014, repLabel = rep(1,24))
+#> 
+#>       ########################################################################################
+#>       ###      ████████ ██ ███    ███ ███████  ██████ ██    ██  ██████ ██      ███████     ###
+#>       ###         ██    ██ ████  ████ ██      ██       ██  ██  ██      ██      ██          ###
+#>       ###         ██    ██ ██ ████ ██ █████   ██        ████   ██      ██      █████       ###
+#>       ###         ██    ██ ██  ██  ██ ██      ██         ██    ██      ██      ██          ###
+#>       ###         ██    ██ ██      ██ ███████  ██████    ██     ██████ ███████ ███████     ###
+#>       ########################################################################################
+#> [1] "Starting TimeCycle"
+#> [1] "Pre-Processing Data"
+#> [1] "Computing Periods"
+#> [1] "Pre-Processing Null Distribution"
+#> [1] "Computing Null Distribution"
+#> [1] "Computing Persistence Scores"
+#> [1] "Calculating p-values"
+#> [1] "TimeCycle Completed"
+#> [1] "Analysis Time: 00:00:48"
+```
 
 Once TimeCycle has finished processing, simply check the output and
 filter for the genes of interest. In this example, we filter for genes
 with a **period of oscillation between 22 and 26** hours and an **FDR
 &lt; 0.05**.
 
-    library(tidyverse)
+``` r
+library(tidyverse)
 
-    TimeCycleResults %>%
-      filter(22 < Period.in.Hours & Period.in.Hours < 26) %>%
-      filter(pVals.adj < 0.05) %>%
-      glimpse()
-    #> Rows: 1,514
-    #> Columns: 7
-    #> $ sampleNames     <chr> "1700001C19Rik", "1700010I14Rik", "1700030K09Rik", "1…
-    #> $ perScore        <dbl> 0.1183563, 0.1922202, 0.1786031, 0.1501900, 0.1348346…
-    #> $ pVals           <dbl> 0.0078, 0.0005, 0.0007, 0.0028, 0.0042, 0.0007, 0.004…
-    #> $ pVals.adj       <dbl> 0.04910976, 0.01256641, 0.01274059, 0.02827061, 0.033…
-    #> $ Period.in.Hours <dbl> 25.40, 23.50, 24.93, 24.30, 25.73, 24.80, 22.67, 23.3…
-    #> $ Amp             <dbl> 0.20, 0.13, 0.07, 0.25, 0.26, 0.16, 0.25, 0.07, 0.13,…
-    #> $ Phase.in.Hours  <dbl> 8.5, 7.0, 2.7, 6.5, 2.3, 4.8, 6.2, 4.5, 4.9, 15.8, 5.…
+TimeCycleResults %>%
+  filter(22 < Period.in.Hours & Period.in.Hours < 26) %>%
+  filter(pVals.adj < 0.05) %>%
+  glimpse()
+#> Rows: 1,514
+#> Columns: 7
+#> $ sampleNames     <chr> "1700001C19Rik", "1700010I14Rik", "1700030K09Rik", "18…
+#> $ perScore        <dbl> 0.1183563, 0.1922202, 0.1786031, 0.1501900, 0.1348346,…
+#> $ pVals           <dbl> 0.0078, 0.0005, 0.0007, 0.0028, 0.0042, 0.0007, 0.0045…
+#> $ pVals.adj       <dbl> 0.04910976, 0.01256641, 0.01274059, 0.02827061, 0.0339…
+#> $ Period.in.Hours <dbl> 25.40, 23.50, 24.93, 24.30, 25.73, 24.80, 22.67, 23.33…
+#> $ Amp             <dbl> 0.20, 0.13, 0.07, 0.25, 0.26, 0.16, 0.25, 0.07, 0.13, …
+#> $ Phase.in.Hours  <dbl> 8.5, 7.0, 2.7, 6.5, 2.3, 4.8, 6.2, 4.5, 4.9, 15.8, 5.9…
+```
 
 See `vignette("TimeCycle")` for a detailed description of algorithm
 design and suggestions for custom parameter selection.

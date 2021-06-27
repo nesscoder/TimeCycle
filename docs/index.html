@@ -110,7 +110,7 @@ https://doi.org/10.1101/2020.11.19.389981
 </blockquote>
 <ul>
 <li>To learn more about the <a href="https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#theory-1">theory</a> and <a href="https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#usage-1">usage</a> of TimeCycle, see our <a href="https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#video-overview-1">video overview</a> and following <code><a href="articles/TimeCycle.html">vignette("TimeCycle")</a></code>.</li>
-<li>For a comprehensive analysis and discussion of TimeCycle’s performance in detecting rhythmic genes, see the accompanying <a href="https://doi.org/10.1101/2020.11.19.389981">paper</a>.</li>
+<li>For a comprehensive analysis and discussion of TimeCycle’s performance in detecting rhythmic genes, see the accompanying <a href="https://doi.org/10.1093/bioinformatics/btab476">paper</a>.</li>
 <li>For details pertaining to the data and source code used in the analysis, see the <a href="https://github.com/nesscoder/TimeCycle-data"><code>nesscoder/TimeCycle-data</code></a> git repository.</li>
 </ul>
 <hr>
@@ -127,8 +127,9 @@ install.packages("TimeCycle")
 devtools::install_github("nesscoder/TimeCycle")
 ```
 -->
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="co"># Install development version from GitHub</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"nesscoder/TimeCycle"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Install development version from GitHub</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"nesscoder/TimeCycle"</span><span class="op">)</span></code></pre></div>
 <hr>
 </div>
 <div id="usage" class="section level2">
@@ -140,45 +141,47 @@ devtools::install_github("nesscoder/TimeCycle")
 <li>See <code><a href="reference/zhang2014.html">zhang2014()</a></code> for additional information about the example data set.</li>
 <li>See <a href="https://nesscoder.github.io/TimeCycle/articles/TimeCycle.html#replicate-labels">replicate labels</a> for additional information regarding <code>repLabel</code>.</li>
 </ul>
-<!-- --><div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">library</span>(TimeCycle)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="co">#set seed for reproducibility with random variables in example usage</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1234</span>) </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>TimeCycleResults &lt;-<span class="st"> </span><span class="kw">TimeCycle</span>(<span class="dt">data =</span> zhang2014, <span class="dt">repLabel =</span> <span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">24</span>))</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a><span class="co">#&gt;       ########################################################################################</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a><span class="co">#&gt;       </span><span class="al">###</span><span class="co">      ████████ ██ ███    ███ ███████  ██████ ██    ██  ██████ ██      ███████     </span><span class="al">###</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a><span class="co">#&gt;       </span><span class="al">###</span><span class="co">         ██    ██ ████  ████ ██      ██       ██  ██  ██      ██      ██          </span><span class="al">###</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a><span class="co">#&gt;       </span><span class="al">###</span><span class="co">         ██    ██ ██ ████ ██ █████   ██        ████   ██      ██      █████       </span><span class="al">###</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a><span class="co">#&gt;       </span><span class="al">###</span><span class="co">         ██    ██ ██  ██  ██ ██      ██         ██    ██      ██      ██          </span><span class="al">###</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a><span class="co">#&gt;       </span><span class="al">###</span><span class="co">         ██    ██ ██      ██ ███████  ██████    ██     ██████ ███████ ███████     </span><span class="al">###</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a><span class="co">#&gt;       ########################################################################################</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a><span class="co">#&gt; [1] "Starting TimeCycle"</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true"></a><span class="co">#&gt; [1] "Pre-Processing Data"</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true"></a><span class="co">#&gt; [1] "Computing Periods"</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true"></a><span class="co">#&gt; [1] "Pre-Processing Null Distribution"</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true"></a><span class="co">#&gt; [1] "Computing Null Distribution"</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true"></a><span class="co">#&gt; [1] "Computing Persistence Scores"</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true"></a><span class="co">#&gt; [1] "Calculating p-values"</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true"></a><span class="co">#&gt; [1] "TimeCycle Completed"</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true"></a><span class="co">#&gt; [1] "Analysis Time: 00:00:47"</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nesscoder/TimeCycle">TimeCycle</a></span><span class="op">)</span>
+
+<span class="co">#set seed for reproducibility with random variables in example usage</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span> 
+
+<span class="va">TimeCycleResults</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/TimeCycle.html">TimeCycle</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">zhang2014</span>, repLabel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">24</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;       ########################################################################################</span>
+<span class="co">#&gt;       ###      ████████ ██ ███    ███ ███████  ██████ ██    ██  ██████ ██      ███████     ###</span>
+<span class="co">#&gt;       ###         ██    ██ ████  ████ ██      ██       ██  ██  ██      ██      ██          ###</span>
+<span class="co">#&gt;       ###         ██    ██ ██ ████ ██ █████   ██        ████   ██      ██      █████       ###</span>
+<span class="co">#&gt;       ###         ██    ██ ██  ██  ██ ██      ██         ██    ██      ██      ██          ###</span>
+<span class="co">#&gt;       ###         ██    ██ ██      ██ ███████  ██████    ██     ██████ ███████ ███████     ###</span>
+<span class="co">#&gt;       ########################################################################################</span>
+<span class="co">#&gt; [1] "Starting TimeCycle"</span>
+<span class="co">#&gt; [1] "Pre-Processing Data"</span>
+<span class="co">#&gt; [1] "Computing Periods"</span>
+<span class="co">#&gt; [1] "Pre-Processing Null Distribution"</span>
+<span class="co">#&gt; [1] "Computing Null Distribution"</span>
+<span class="co">#&gt; [1] "Computing Persistence Scores"</span>
+<span class="co">#&gt; [1] "Calculating p-values"</span>
+<span class="co">#&gt; [1] "TimeCycle Completed"</span>
+<span class="co">#&gt; [1] "Analysis Time: 00:00:48"</span></code></pre></div>
 <p>Once TimeCycle has finished processing, simply check the output and filter for the genes of interest. In this example, we filter for genes with a <strong>period of oscillation between 22 and 26</strong> hours and an <strong>FDR &lt; 0.05</strong>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>TimeCycleResults <span class="op">%&gt;%</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter</span>(<span class="dv">22</span> <span class="op">&lt;</span><span class="st"> </span>Period.in.Hours <span class="op">&amp;</span><span class="st"> </span>Period.in.Hours <span class="op">&lt;</span><span class="st"> </span><span class="dv">26</span>) <span class="op">%&gt;%</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter</span>(pVals.adj <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.05</span>) <span class="op">%&gt;%</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">glimpse</span>()</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="co">#&gt; Rows: 1,514</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a><span class="co">#&gt; Columns: 7</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a><span class="co">#&gt; $ sampleNames     &lt;chr&gt; "1700001C19Rik", "1700010I14Rik", "1700030K09Rik", "1…</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a><span class="co">#&gt; $ perScore        &lt;dbl&gt; 0.1183563, 0.1922202, 0.1786031, 0.1501900, 0.1348346…</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a><span class="co">#&gt; $ pVals           &lt;dbl&gt; 0.0078, 0.0005, 0.0007, 0.0028, 0.0042, 0.0007, 0.004…</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a><span class="co">#&gt; $ pVals.adj       &lt;dbl&gt; 0.04910976, 0.01256641, 0.01274059, 0.02827061, 0.033…</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a><span class="co">#&gt; $ Period.in.Hours &lt;dbl&gt; 25.40, 23.50, 24.93, 24.30, 25.73, 24.80, 22.67, 23.3…</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true"></a><span class="co">#&gt; $ Amp             &lt;dbl&gt; 0.20, 0.13, 0.07, 0.25, 0.26, 0.16, 0.25, 0.07, 0.13,…</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true"></a><span class="co">#&gt; $ Phase.in.Hours  &lt;dbl&gt; 8.5, 7.0, 2.7, 6.5, 2.3, 4.8, 6.2, 4.5, 4.9, 15.8, 5.…</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+
+<span class="va">TimeCycleResults</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fl">22</span> <span class="op">&lt;</span> <span class="va">Period.in.Hours</span> <span class="op">&amp;</span> <span class="va">Period.in.Hours</span> <span class="op">&lt;</span> <span class="fl">26</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">pVals.adj</span> <span class="op">&lt;</span> <span class="fl">0.05</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">glimpse</span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; Rows: 1,514</span>
+<span class="co">#&gt; Columns: 7</span>
+<span class="co">#&gt; $ sampleNames     &lt;chr&gt; "1700001C19Rik", "1700010I14Rik", "1700030K09Rik", "18…</span>
+<span class="co">#&gt; $ perScore        &lt;dbl&gt; 0.1183563, 0.1922202, 0.1786031, 0.1501900, 0.1348346,…</span>
+<span class="co">#&gt; $ pVals           &lt;dbl&gt; 0.0078, 0.0005, 0.0007, 0.0028, 0.0042, 0.0007, 0.0045…</span>
+<span class="co">#&gt; $ pVals.adj       &lt;dbl&gt; 0.04910976, 0.01256641, 0.01274059, 0.02827061, 0.0339…</span>
+<span class="co">#&gt; $ Period.in.Hours &lt;dbl&gt; 25.40, 23.50, 24.93, 24.30, 25.73, 24.80, 22.67, 23.33…</span>
+<span class="co">#&gt; $ Amp             &lt;dbl&gt; 0.20, 0.13, 0.07, 0.25, 0.26, 0.16, 0.25, 0.07, 0.13, …</span>
+<span class="co">#&gt; $ Phase.in.Hours  &lt;dbl&gt; 8.5, 7.0, 2.7, 6.5, 2.3, 4.8, 6.2, 4.5, 4.9, 15.8, 5.9…</span></code></pre></div>
 <p>See <code><a href="articles/TimeCycle.html">vignette("TimeCycle")</a></code> for a detailed description of algorithm design and suggestions for custom parameter selection.</p>
 </div>
 </div>
@@ -220,7 +223,7 @@ devtools::install_github("nesscoder/TimeCycle")
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://doi.org/10.1101/2020.11.19.389981"><img src="https://img.shields.io/badge/doi-10.1101/2020.11.19.389981-yellow.svg"></a></li>
+<li><a href="https://doi.org/10.1093/bioinformatics/btab476"><img src="https://img.shields.io/badge/doi-10.1093/bioinformatics/btab476-yellow.svg"></a></li>
 <li><a href="https://github.com/nesscoder/TimeCycle/actions"><img src="https://github.com/nesscoder/TimeCycle/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
 <li><a href="https://github.com/nesscoder/TimeCycle"><img src="https://img.shields.io/badge/devel%20version-1.0.0-blue.svg"></a></li>
